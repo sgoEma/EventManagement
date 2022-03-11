@@ -7,6 +7,9 @@
 # BlueJ files
 *.ctxt
 
+# Ignore Salesforce DX config files
+.sfdx
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
