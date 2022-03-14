@@ -155,9 +155,8 @@
     <externalSharingModel>Private</externalSharingModel>
     <label>Public Event</label>
     <nameField>
-        <displayFormat>P-{0000}</displayFormat>
         <label>Public Events Name</label>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
     <pluralLabel>Public Events</pluralLabel>
     <searchLayouts></searchLayouts>
