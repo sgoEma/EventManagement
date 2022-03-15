@@ -12,6 +12,7 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>Contact</members>
 		<members>Public_Event__c</members>
 		<name>CustomObject</name>
 	</types>
@@ -24,8 +25,17 @@
 		<name>FlexiPage</name>
 	</types>
 	<types>
+		<members>Contact-Contact Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>Contact.AllContacts</members>
+		<members>Contact.BirthdaysThisMonth</members>
+		<members>Contact.MyContacts</members>
+		<members>Contact.NewLastWeek</members>
+		<members>Contact.NewThisWeek</members>
+		<name>ListView</name>
 	</types>
 	<types>
 		<members>Admin</members>
