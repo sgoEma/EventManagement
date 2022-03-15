@@ -30,14 +30,6 @@
 		<name>Layout</name>
 	</types>
 	<types>
-		<members>Contact.AllContacts</members>
-		<members>Contact.BirthdaysThisMonth</members>
-		<members>Contact.MyContacts</members>
-		<members>Contact.NewLastWeek</members>
-		<members>Contact.NewThisWeek</members>
-		<name>ListView</name>
-	</types>
-	<types>
 		<members>Admin</members>
 		<name>Profile</name>
 	</types>
