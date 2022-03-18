@@ -13,6 +13,10 @@
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>Public_Event__c.Address__c</members>
+		<members>Public_Event__c.End_Date__c</members>
+		<members>Public_Event__c.Start_Date__c</members>
+		<members>Public_Event__c.Type__c</members>
 		<members>Session__c.CSAT_Score__c</members>
 		<members>Session__c.End_Date_Time__c</members>
 		<members>Session__c.Level__c</members>
@@ -28,21 +32,22 @@
 		<name>CustomField</name>
 	</types>
 	<types>
+		<members>Contact</members>
+		<members>Public_Event__c</members>
 		<members>Session__c</members>
 		<members>Speaker__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
-		<members>Session__c-en_US</members>
-		<members>Speaker__c-en_US</members>
-		<name>CustomObjectTranslation</name>
-	</types>
-	<types>
-		<members>Session__c</members>
-		<members>Speaker__c</members>
+		<members>*</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>Contact-Contact Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
 		<members>Session__c-Session Layout</members>
 		<members>Speaker__c-Speaker Layout</members>
@@ -58,10 +63,7 @@
 		<name>Profile</name>
 	</types>
 	<types>
-		<members>Speaker__c</members>
-		<name>SharingRules</name>
-	</types>
-	<types>
+		<members>Public_Event__c.Start_Date_is_not_Null</members>
 		<members>Session__c.Compare_Start_and_End_Date</members>
 		<members>Session__c.Validate_Date</members>
 		<name>ValidationRule</name>
