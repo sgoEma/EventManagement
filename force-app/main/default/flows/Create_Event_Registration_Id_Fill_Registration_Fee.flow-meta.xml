@@ -2,10 +2,27 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
     <assignments>
-        <name>ccc</name>
-        <label>ccc</label>
-        <locationX>451</locationX>
-        <locationY>413</locationY>
+        <description>Create Unique Id from Public Event Id &amp; Contact Id</description>
+        <name>Create_Unique_Id</name>
+        <label>Create Unique Id</label>
+        <locationX>1044</locationX>
+        <locationY>392</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Registration_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>{!$Record.Public_Event__r.Id}{!$Record.Contact__r.Id}</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Desicion_1</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_Customer_Registration_Fee_Update</name>
+        <label>Update Customer Registration Fee Update</label>
+        <locationX>515</locationX>
+        <locationY>697</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -15,23 +32,10 @@
         </assignmentItems>
     </assignments>
     <assignments>
-        <name>dfg</name>
-        <label>dfg</label>
-        <locationX>449</locationX>
-        <locationY>680</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.Registration_Fee__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <numberValue>80.0</numberValue>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>tmhjt</name>
-        <label>tmhjt</label>
-        <locationX>1003</locationX>
-        <locationY>597</locationY>
+        <name>Update_Employee_Registration_Fee_Update</name>
+        <label>Update Employee Registration Fee Update</label>
+        <locationX>1648</locationX>
+        <locationY>683</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -40,11 +44,24 @@
             </value>
         </assignmentItems>
     </assignments>
+    <assignments>
+        <name>Update_Partner_Registration_Fee_Update</name>
+        <label>Update Partner Registration Fee Update</label>
+        <locationX>1052</locationX>
+        <locationY>813</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Registration_Fee__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <numberValue>80.0</numberValue>
+            </value>
+        </assignmentItems>
+    </assignments>
     <decisions>
         <name>Desicion_1</name>
         <label>Desicion 1</label>
-        <locationX>1037</locationX>
-        <locationY>415</locationY>
+        <locationX>1038</locationX>
+        <locationY>565</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Custom_Registration_Fee</name>
@@ -69,7 +86,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>ccc</targetReference>
+                <targetReference>Update_Customer_Registration_Fee_Update</targetReference>
             </connector>
             <label>Customer Registration Fee Update</label>
         </rules>
@@ -84,7 +101,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>dfg</targetReference>
+                <targetReference>Update_Partner_Registration_Fee_Update</targetReference>
             </connector>
             <label>Partner Registration Fee Update</label>
         </rules>
@@ -99,13 +116,13 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>tmhjt</targetReference>
+                <targetReference>Update_Employee_Registration_Fee_Update</targetReference>
             </connector>
             <label>Employee Registration Fee Update</label>
         </rules>
     </decisions>
-    <interviewLabel>Fill Registration Fee {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Fill Registration Fee</label>
+    <interviewLabel>Create Event Registration Id &amp; Fill Registration Fee {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Create Event Registration Id &amp; Fill Registration Fee</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -129,7 +146,7 @@
         <locationX>930</locationX>
         <locationY>48</locationY>
         <connector>
-            <targetReference>Desicion_1</targetReference>
+            <targetReference>Create_Unique_Id</targetReference>
         </connector>
         <object>Event_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>

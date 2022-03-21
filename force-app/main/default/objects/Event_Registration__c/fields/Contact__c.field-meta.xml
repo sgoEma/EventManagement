@@ -3,6 +3,16 @@
     <fullName>Contact__c</fullName>
     <externalId>false</externalId>
     <label>Contact</label>
+    <lookupFilter>
+        <active>true</active>
+        <errorMessage>You can only create attendee for event registration</errorMessage>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Attendee</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Event Registrations</relationshipLabel>
     <relationshipName>Event_Registrations</relationshipName>

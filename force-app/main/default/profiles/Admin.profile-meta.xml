@@ -5,10 +5,6 @@
         <default>false</default>
         <visible>true</visible>
     </applicationVisibilities>
-    <classAccesses>
-        <apexClass>EventRegistrationDuplicate</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -142,15 +138,24 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Event_Registration__c.Registration_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Public_Event__c.Start_Date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Fill_Registration_Fee</flow>
+        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout</layout>
+        <recordType>Contact.Attendee</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Event_Registration__c-Event Registration Layout</layout>
@@ -189,6 +194,11 @@
         <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Contact.Attendee</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Event_Registration__c</tab>
         <visibility>DefaultOn</visibility>
