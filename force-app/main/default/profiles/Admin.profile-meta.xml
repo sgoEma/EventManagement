@@ -164,10 +164,6 @@
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-Contact Layout</layout>
-        <recordType>Contact.Test</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Contact-Speaker Layout</layout>
         <recordType>Contact.Speaker</recordType>
     </layoutAssignments>
