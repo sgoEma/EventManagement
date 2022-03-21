@@ -156,6 +156,10 @@
         <field>Session__c.Speaker__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Before_Public_Event_Delete</flow>
+    </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
