@@ -122,11 +122,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Public_Event__c.Start_Date__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Session__c.CSAT_Score__c</field>
         <readable>true</readable>
@@ -161,28 +156,22 @@
         <field>Session__c.Speaker__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Speaker__c.Phone__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Speaker__c.Title__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout</layout>
+        <recordType>Contact.Test</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Speaker Layout</layout>
+        <recordType>Contact.Speaker</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Public_Event__c-Public Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Session__c-Session Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Speaker__c-Speaker Layout</layout>
     </layoutAssignments>
     <objectPermissions>
         <allowCreate>true</allowCreate>
@@ -211,19 +200,11 @@
         <object>Session__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>Speaker__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <tabVisibilities>
-        <tab>standard-Contact</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Contact.Speaker</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Public_Event__c</tab>
         <visibility>DefaultOn</visibility>
@@ -233,7 +214,7 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Speaker__c</tab>
+        <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <userLicense>Salesforce</userLicense>

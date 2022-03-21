@@ -13,7 +13,7 @@
     <navType>Standard</navType>
     <tabs>Public_Event__c</tabs>
     <tabs>Session__c</tabs>
-    <tabs>Speaker__c</tabs>
+    <tabs>standard-Contact</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Events_UtilityBar</utilityBar>
 </CustomApplication>

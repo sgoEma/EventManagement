@@ -4,7 +4,17 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
     <label>Speaker</label>
-    <referenceTo>Speaker__c</referenceTo>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Contact.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Speaker</value>
+        </filterItems>
+        <infoMessage>Please select only speaker!</infoMessage>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Contact</referenceTo>
     <relationshipLabel>Sessions</relationshipLabel>
     <relationshipName>Sessions</relationshipName>
     <required>false</required>
