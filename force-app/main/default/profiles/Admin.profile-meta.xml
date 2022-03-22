@@ -184,7 +184,7 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
-
+    </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
@@ -250,19 +250,19 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
-        <default>true</default>
+        <default>false</default>
         <recordType>Contact.Speaker</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Contact.Attendee</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Public_Event__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Contact.Attendee</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Event_Registration__c</tab>
         <visibility>DefaultOn</visibility>
