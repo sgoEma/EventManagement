@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>*</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
 		<members>Events</members>
 		<name>CustomApplication</name>
 	</types>
@@ -17,12 +21,22 @@
 		<members>Public_Event__c.End_Date__c</members>
 		<members>Public_Event__c.Start_Date__c</members>
 		<members>Public_Event__c.Type__c</members>
+		<members>Session__c.CSAT_Score__c</members>
+		<members>Session__c.End_Date_Time__c</members>
+		<members>Session__c.Level__c</members>
+		<members>Session__c.Public_Event__c</members>
+		<members>Session__c.Room_Capacity_For_VIPs__c</members>
+		<members>Session__c.Room_Capacity__c</members>
+		<members>Session__c.Room_Name__c</members>
+		<members>Session__c.Speaker__c</members>
+		<members>Session__c.Start_Date_Time__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
 		<members>Contact</members>
 		<members>Event_Registration__c</members>
 		<members>Public_Event__c</members>
+		<members>Session__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -45,10 +59,13 @@
 		<members>Contact-Contact %28Attendee%29 Layout</members>
 		<members>Contact-Contact Layout</members>
 		<members>Event_Registration__c-Event Registration Layout</members>
+    <members>Contact-Speaker Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
+		<members>Session__c-Session Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
+    <members>Session__c.All</members>
 		<members>Event_Registration__c.All</members>
 		<name>ListView</name>
 	</types>
@@ -57,11 +74,14 @@
 		<name>Profile</name>
 	</types>
 	<types>
+    <members>Contact.Speaker</members>
 		<members>Contact.Attendee</members>
 		<name>RecordType</name>
 	</types>
 	<types>
 		<members>Public_Event__c.Start_Date_is_not_Null</members>
+		<members>Session__c.Compare_Start_and_End_Date</members>
+		<members>Session__c.Validate_Date</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>53.0</version>
