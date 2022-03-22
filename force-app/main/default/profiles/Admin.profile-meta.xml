@@ -42,6 +42,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Contact.Dietary_of_Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Contact.DoNotCall</field>
         <readable>false</readable>
@@ -117,6 +122,26 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Registration__c.Contact_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Registration__c.Dietary_of_Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event_Registration__c.Registration_Fee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event_Registration__c.Registration_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Public_Event__c.Start_Date__c</field>
         <readable>true</readable>
@@ -159,9 +184,24 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
+
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-Contact Layout</layout>
+        <recordType>Contact.Attendee</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Event_Registration__c-Event Registration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Speaker Layout</layout>
@@ -180,6 +220,15 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
         <object>Contact</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
+        <object>Event_Registration__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
@@ -209,8 +258,21 @@
         <tab>Public_Event__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Contact.Attendee</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <tabVisibilities>
+        <tab>Event_Registration__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
     <tabVisibilities>
         <tab>Session__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

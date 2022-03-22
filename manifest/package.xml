@@ -9,6 +9,14 @@
 		<name>CustomApplication</name>
 	</types>
 	<types>
+		<members>Contact.Contact_Type__c</members>
+		<members>Contact.Dietary_of_Contact__c</members>
+		<members>Event_Registration__c.Contact_Type__c</members>
+		<members>Event_Registration__c.Contact__c</members>
+		<members>Event_Registration__c.Dietary_of_Contact__c</members>
+		<members>Event_Registration__c.Public_Event__c</members>
+		<members>Event_Registration__c.Registration_Fee__c</members>
+		<members>Event_Registration__c.Registration_Id__c</members>
 		<members>Public_Event__c.Address__c</members>
 		<members>Public_Event__c.End_Date__c</members>
 		<members>Public_Event__c.Start_Date__c</members>
@@ -26,6 +34,7 @@
 	</types>
 	<types>
 		<members>Contact</members>
+		<members>Event_Registration__c</members>
 		<members>Public_Event__c</members>
 		<members>Session__c</members>
 		<name>CustomObject</name>
@@ -47,14 +56,17 @@
 		<name>FlowDefinition</name>
 	</types>
 	<types>
+		<members>Contact-Contact %28Attendee%29 Layout</members>
 		<members>Contact-Contact Layout</members>
-		<members>Contact-Speaker Layout</members>
+		<members>Event_Registration__c-Event Registration Layout</members>
+    <members>Contact-Speaker Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
 		<members>Session__c-Session Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
-		<members>Session__c.All</members>
+    <members>Session__c.All</members>
+		<members>Event_Registration__c.All</members>
 		<name>ListView</name>
 	</types>
 	<types>
@@ -62,7 +74,8 @@
 		<name>Profile</name>
 	</types>
 	<types>
-		<members>Contact.Speaker</members>
+    <members>Contact.Speaker</members>
+		<members>Contact.Attendee</members>
 		<name>RecordType</name>
 	</types>
 	<types>
