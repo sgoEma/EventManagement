@@ -153,17 +153,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
-    <label>Event Registration</label>
+    <label>Session Registration</label>
     <nameField>
-        <displayFormat>E-{0000}</displayFormat>
-        <label>Event Registration Name</label>
+        <displayFormat>SR-{0000}</displayFormat>
+        <label>Session Registration Name</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Event Registrations</pluralLabel>
-    <searchLayouts>
-        <searchResultsAdditionalFields>Contact__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Public_Event__c</searchResultsAdditionalFields>
-    </searchLayouts>
+    <pluralLabel>Session Registrations</pluralLabel>
+    <searchLayouts></searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

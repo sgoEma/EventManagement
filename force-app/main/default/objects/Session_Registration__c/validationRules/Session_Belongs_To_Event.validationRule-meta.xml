@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_Belongs_To_Event</fullName>
+    <active>true</active>
+    <errorConditionFormula>Event_Registration__r.Public_Event__c  &lt;&gt;  Session__r.Public_Event__c</errorConditionFormula>
+    <errorDisplayField>Session__c</errorDisplayField>
+    <errorMessage>Selected session isn&apos;t belongs to selected Event</errorMessage>
+</ValidationRule>
