@@ -159,9 +159,7 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Sessions</pluralLabel>
-    <searchLayouts>
-        <searchResultsAdditionalFields>Public_Event__c</searchResultsAdditionalFields>
-    </searchLayouts>
+    <searchLayouts></searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
