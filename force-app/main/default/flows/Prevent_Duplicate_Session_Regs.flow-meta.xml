@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Assign_JuncitonID</name>
+        <label>Assign JuncitonID</label>
+        <locationX>680</locationX>
+        <locationY>411</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.JunctionID__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>{!$Record.Session__c}&amp;{!$Record.Attendee__c}</stringValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <interviewLabel>Prevent Duplicate Session Regs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Prevent Duplicate Session Regs</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>554</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Assign_JuncitonID</targetReference>
+        </connector>
+        <object>Session_Registration__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
