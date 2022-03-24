@@ -5,44 +5,6 @@
     <compactLayoutAssignment>Speaker_Layout</compactLayoutAssignment>
     <label>Speaker</label>
     <picklistValues>
-        <picklist>Contact_Type__c</picklist>
-        <values>
-            <fullName>Customer</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Employee</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Partner</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
-        <picklist>Dietary_of_Contact__c</picklist>
-        <values>
-            <fullName>Diabetic</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Gluten-free</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Other</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Vegan</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Vegetarian</fullName>
-            <default>false</default>
-        </values>
-    </picklistValues>
-    <picklistValues>
         <picklist>LeadSource</picklist>
         <values>
             <fullName>Other</fullName>
