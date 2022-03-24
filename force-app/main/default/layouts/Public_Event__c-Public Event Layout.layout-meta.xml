@@ -224,6 +224,10 @@
     </quickActionList>
     <relatedLists>
         <fields>NAME</fields>
+        <relatedList>Event_Registration__c.Public_Event__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <relatedList>Session__c.Public_Event__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
