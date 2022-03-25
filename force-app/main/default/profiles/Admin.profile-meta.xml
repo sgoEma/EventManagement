@@ -147,6 +147,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Session_Registration__c.JunctionID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Session__c.CSAT_Score__c</field>
         <readable>true</readable>
@@ -211,6 +216,9 @@
         <layout>Public_Event__c-Public Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Session_Registration__c-Session Registration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Session__c-Session Layout</layout>
     </layoutAssignments>
     <objectPermissions>
@@ -246,6 +254,15 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>Session_Registration__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>Session__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
@@ -269,6 +286,10 @@
     </tabVisibilities>
     <tabVisibilities>
         <tab>Session__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Session_Registration__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
