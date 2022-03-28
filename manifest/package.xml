@@ -2,6 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
 		<members>*</members>
+		<name>ApexClass</name>
+	</types
+	<types>
+		<members>*</members>
 		<name>CompactLayout</name>
 	</types>
 	<types>
@@ -17,9 +21,12 @@
 		<members>Event_Registration__c.Public_Event__c</members>
 		<members>Event_Registration__c.Registration_Fee__c</members>
 		<members>Event_Registration__c.Registration_Id__c</members>
-		<members>Public_Event__c.Address__c</members>
+		<members>Public_Event__c.City__c</members>
+		<members>Public_Event__c.Country__c</members>
 		<members>Public_Event__c.End_Date__c</members>
+		<members>Public_Event__c.Postal_Code__c</members>
 		<members>Public_Event__c.Start_Date__c</members>
+		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
 		<members>Session_Registration__c.Attendee__c</members>
 		<members>Session_Registration__c.JunctionID__c</members>
@@ -68,6 +75,10 @@
 		<members>Session_Registration__c-Session Registration Layout</members>
 		<members>Session__c-Session Layout</members>
 		<name>Layout</name>
+	</types>
+	<types>
+		<members>*</members>
+		<name>LightningComponentBundle</name>
 	</types>
 	<types>
 		<members>Event_Registration__c.All</members>
