@@ -66,7 +66,7 @@
 		<members>Contact-Contact %28Attendee%29 Layout</members>
 		<members>Contact-Contact Layout</members>
 		<members>Event_Registration__c-Event Registration Layout</members>
-    	<members>Contact-Speaker Layout</members>
+    		<members>Contact-Speaker Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
 		<members>Session__c-Session Layout</members>
 		<name>Layout</name>
@@ -76,7 +76,7 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
-    	<members>Session__c.All</members>
+    		<members>Session__c.All</members>
 		<members>Event_Registration__c.All</members>
 		<name>ListView</name>
 	</types>
@@ -85,7 +85,7 @@
 		<name>Profile</name>
 	</types>
 	<types>
-    	<members>Contact.Speaker</members>
+    		<members>Contact.Speaker</members>
 		<members>Contact.Attendee</members>
 		<name>RecordType</name>
 	</types>
