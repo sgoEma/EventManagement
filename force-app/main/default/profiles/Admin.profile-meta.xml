@@ -5,6 +5,10 @@
         <default>false</default>
         <visible>true</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>DisplayMapController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
     <fieldPermissions>
         <editable>true</editable>
@@ -143,7 +147,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <fieldPermissions>
+        <editable>true</editable>
+        <field>Public_Event__c.City__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Public_Event__c.Country__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+        <field>Public_Event__c.Postal_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Public_Event__c.Start_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Public_Event__c.Street__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -184,10 +208,6 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
-
-    <flowAccesses>
-        <enabled>false</enabled>
-        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -201,11 +221,11 @@
         <recordType>Contact.Attendee</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Event_Registration__c-Event Registration Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Contact-Speaker Layout</layout>
         <recordType>Contact.Speaker</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Event_Registration__c-Event Registration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Public_Event__c-Public Event Layout</layout>
@@ -251,20 +271,16 @@
     </objectPermissions>
     <recordTypeVisibilities>
         <default>true</default>
+        <recordType>Contact.Attendee</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
         <recordType>Contact.Speaker</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>Public_Event__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Contact.Attendee</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <tabVisibilities>
-        <tab>Event_Registration__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
