@@ -147,6 +147,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Session_Registration__c.JunctionID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Session__c.CSAT_Score__c</field>
         <readable>true</readable>
@@ -184,14 +189,14 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
-
+    </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
+        <flow>Prevent_Duplicate_Session_Regs</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
@@ -201,14 +206,17 @@
         <recordType>Contact.Attendee</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Event_Registration__c-Event Registration Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Contact-Speaker Layout</layout>
         <recordType>Contact.Speaker</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Event_Registration__c-Event Registration Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Public_Event__c-Public Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Session_Registration__c-Session Registration Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Session__c-Session Layout</layout>
@@ -246,21 +254,26 @@
         <allowEdit>true</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>true</modifyAllRecords>
+        <object>Session_Registration__c</object>
+        <viewAllRecords>true</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>true</modifyAllRecords>
         <object>Session__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
         <default>true</default>
-        <recordType>Contact.Speaker</recordType>
+        <recordType>Contact.Attendee</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
-    <tabVisibilities>
-        <tab>Public_Event__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
     <recordTypeVisibilities>
-        <default>true</default>
-        <recordType>Contact.Attendee</recordType>
+        <default>false</default>
+        <recordType>Contact.Speaker</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
@@ -268,11 +281,15 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Session__c</tab>
+        <tab>Public_Event__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>standard-Contact</tab>
+        <tab>Session_Registration__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>Session__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>

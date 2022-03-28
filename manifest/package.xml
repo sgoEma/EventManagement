@@ -21,6 +21,9 @@
 		<members>Public_Event__c.End_Date__c</members>
 		<members>Public_Event__c.Start_Date__c</members>
 		<members>Public_Event__c.Type__c</members>
+		<members>Session_Registration__c.Attendee__c</members>
+		<members>Session_Registration__c.JunctionID__c</members>
+		<members>Session_Registration__c.Session__c</members>
 		<members>Session__c.CSAT_Score__c</members>
 		<members>Session__c.End_Date_Time__c</members>
 		<members>Session__c.Level__c</members>
@@ -36,6 +39,7 @@
 		<members>Contact</members>
 		<members>Event_Registration__c</members>
 		<members>Public_Event__c</members>
+		<members>Session_Registration__c</members>
 		<members>Session__c</members>
 		<name>CustomObject</name>
 	</types>
@@ -58,15 +62,16 @@
 	<types>
 		<members>Contact-Contact %28Attendee%29 Layout</members>
 		<members>Contact-Contact Layout</members>
+		<members>Contact-Speaker Layout</members>
 		<members>Event_Registration__c-Event Registration Layout</members>
-    <members>Contact-Speaker Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
+		<members>Session_Registration__c-Session Registration Layout</members>
 		<members>Session__c-Session Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
-    <members>Session__c.All</members>
 		<members>Event_Registration__c.All</members>
+		<members>Session__c.All</members>
 		<name>ListView</name>
 	</types>
 	<types>
@@ -74,8 +79,8 @@
 		<name>Profile</name>
 	</types>
 	<types>
-    <members>Contact.Speaker</members>
 		<members>Contact.Attendee</members>
+		<members>Contact.Speaker</members>
 		<name>RecordType</name>
 	</types>
 	<types>
