@@ -56,6 +56,10 @@
 		<name>Flow</name>
 	</types>
 	<types>
+		<members>*</members>
+		<name>FlowDefinition</name>
+	</types>
+	<types>
 		<members>Contact-Contact %28Attendee%29 Layout</members>
 		<members>Contact-Contact Layout</members>
 		<members>Event_Registration__c-Event Registration Layout</members>

@@ -10,10 +10,16 @@
             <assignToReference>$Record.JunctionID__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>{!$Record.Session__c}&amp;{!$Record.Attendee__c}</stringValue>
+                <elementReference>CreateID</elementReference>
             </value>
         </assignmentItems>
     </assignments>
+    <formulas>
+        <description>Creates the junctionID</description>
+        <name>CreateID</name>
+        <dataType>String</dataType>
+        <expression>Left({!$Record.Session__c},15)+Left({!$Record.Attendee__c},15)</expression>
+    </formulas>
     <interviewLabel>Prevent Duplicate Session Regs {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Prevent Duplicate Session Regs</label>
     <processMetadataValues>

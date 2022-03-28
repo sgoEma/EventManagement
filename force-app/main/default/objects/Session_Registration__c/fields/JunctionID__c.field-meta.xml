@@ -5,7 +5,7 @@
     <description>Unique ID field for attendee and session pair</description>
     <externalId>false</externalId>
     <label>JunctionID</label>
-    <length>36</length>
+    <length>30</length>
     <required>false</required>
     <trackTrending>false</trackTrending>
     <type>Text</type>
