@@ -232,6 +232,10 @@
         <fields>NAME</fields>
         <relatedList>Event_Registration__c.Contact__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Session_Registration__c.Attendee__c</relatedList>
+    </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

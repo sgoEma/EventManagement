@@ -305,10 +305,6 @@
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
     <tabVisibilities>
-        <tab>Public_Event__c</tab>
-        <visibility>DefaultOn</visibility>
-    </tabVisibilities>
-    <tabVisibilities>
         <tab>Session_Registration__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
