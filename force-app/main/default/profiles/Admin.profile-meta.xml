@@ -136,6 +136,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Registration__c.Event_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Event_Registration__c.Registration_Fee__c</field>
         <readable>true</readable>
@@ -146,18 +151,18 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <fieldPermissions>
-        <editable>true</editable>
-        <field>Public_Event__c.City__c</field>
+        <editable>false</editable>
+        <field>Public_Event__c.Number_of_Registered_Attendee__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Public_Event__c.Country__c</field>
+        <editable>false</editable>
+        <field>Public_Event__c.Postal_Code__c</field>
         <readable>true</readable>
     </fieldPermissions>
-        <field>Public_Event__c.Postal_Code__c</field>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Public_Event__c.Revenue__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -210,6 +215,10 @@
         <field>Session__c.Speaker__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Auto_Registration_for_Welcome_Session</flow>
+    </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
@@ -312,7 +321,7 @@
         <tab>Session__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
-    <tabVisibilities>
+        <tabVisibilities>
         <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

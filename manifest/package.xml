@@ -18,13 +18,16 @@
 		<members>Event_Registration__c.Contact_Type__c</members>
 		<members>Event_Registration__c.Contact__c</members>
 		<members>Event_Registration__c.Dietary_of_Contact__c</members>
+		<members>Event_Registration__c.Event_Type__c</members>
 		<members>Event_Registration__c.Public_Event__c</members>
 		<members>Event_Registration__c.Registration_Fee__c</members>
 		<members>Event_Registration__c.Registration_Id__c</members>
 		<members>Public_Event__c.City__c</members>
 		<members>Public_Event__c.Country__c</members>
 		<members>Public_Event__c.End_Date__c</members>
+		<members>Public_Event__c.Number_of_Registered_Attendee__c</members>
 		<members>Public_Event__c.Postal_Code__c</members>
+		<members>Public_Event__c.Revenue__c</members>
 		<members>Public_Event__c.Start_Date__c</members>
 		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
