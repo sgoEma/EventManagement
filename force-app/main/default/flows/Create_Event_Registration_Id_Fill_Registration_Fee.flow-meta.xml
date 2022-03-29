@@ -5,13 +5,13 @@
         <description>Create Unique Id from Public Event Id &amp; Contact Id</description>
         <name>Create_Unique_Id</name>
         <label>Create Unique Id</label>
-        <locationX>1044</locationX>
-        <locationY>392</locationY>
+        <locationX>1045</locationX>
+        <locationY>668</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Id__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>{!$Record.Public_Event__r.Id}{!$Record.Contact__r.Id}</stringValue>
+                <elementReference>ContactId_15DigitPublicEventId_15Digit</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -21,8 +21,8 @@
     <assignments>
         <name>Update_Customer_Registration_Fee_Update</name>
         <label>Update Customer Registration Fee Update</label>
-        <locationX>515</locationX>
-        <locationY>697</locationY>
+        <locationX>457</locationX>
+        <locationY>879</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -34,8 +34,8 @@
     <assignments>
         <name>Update_Employee_Registration_Fee_Update</name>
         <label>Update Employee Registration Fee Update</label>
-        <locationX>1648</locationX>
-        <locationY>683</locationY>
+        <locationX>1678</locationX>
+        <locationY>871</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -47,8 +47,8 @@
     <assignments>
         <name>Update_Partner_Registration_Fee_Update</name>
         <label>Update Partner Registration Fee Update</label>
-        <locationX>1052</locationX>
-        <locationY>813</locationY>
+        <locationX>1043</locationX>
+        <locationY>1155</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -60,8 +60,8 @@
     <decisions>
         <name>Desicion_1</name>
         <label>Desicion 1</label>
-        <locationX>1038</locationX>
-        <locationY>565</locationY>
+        <locationX>1035</locationX>
+        <locationY>877</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Custom_Registration_Fee</name>
@@ -121,6 +121,47 @@
             <label>Employee Registration Fee Update</label>
         </rules>
     </decisions>
+    <decisions>
+        <name>Id_Check</name>
+        <label>Id Check</label>
+        <locationX>1034</locationX>
+        <locationY>440</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Contact_or_Public_Event_Change_or_Registration_Id_is_Null</name>
+            <conditionLogic>1 OR 2 OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Contact__r.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Public_Event__r.Id</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <elementReference>$Record__Prior.Public_Event__r.Id</elementReference>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Registration_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Unique_Id</targetReference>
+            </connector>
+            <label>Contact or Public Event Change or Registration Id is Null</label>
+        </rules>
+    </decisions>
+    <formulas>
+        <name>ContactId_15DigitPublicEventId_15Digit</name>
+        <dataType>String</dataType>
+        <expression>LEFT({!$Record.Contact__r.Id},15)+LEFT({!$Record.Public_Event__r.Id},15)</expression>
+    </formulas>
     <interviewLabel>Create Event Registration Id &amp; Fill Registration Fee {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create Event Registration Id &amp; Fill Registration Fee</label>
     <processMetadataValues>
@@ -143,10 +184,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>930</locationX>
-        <locationY>48</locationY>
+        <locationX>924</locationX>
+        <locationY>50</locationY>
         <connector>
-            <targetReference>Create_Unique_Id</targetReference>
+            <targetReference>Id_Check</targetReference>
         </connector>
         <object>Event_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
