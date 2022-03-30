@@ -192,6 +192,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Session__c.Is_Mandatory__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Session__c.Level__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -217,7 +222,7 @@
     </fieldPermissions>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Auto_Registration_for_Welcome_Session</flow>
+        <flow>After_Insert_Event_Registration</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
@@ -321,7 +326,7 @@
         <tab>Session__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
-        <tabVisibilities>
+    <tabVisibilities>
         <tab>standard-Contact</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>

@@ -36,6 +36,7 @@
 		<members>Session_Registration__c.Session__c</members>
 		<members>Session__c.CSAT_Score__c</members>
 		<members>Session__c.End_Date_Time__c</members>
+		<members>Session__c.Is_Mandatory__c</members>
 		<members>Session__c.Level__c</members>
 		<members>Session__c.Public_Event__c</members>
 		<members>Session__c.Room_Capacity_For_VIPs__c</members>
