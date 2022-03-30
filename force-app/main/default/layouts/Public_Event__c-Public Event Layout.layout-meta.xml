@@ -26,6 +26,14 @@
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Number_of_Registered_Attendee__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Revenue__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
             </layoutItems>
@@ -236,7 +244,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h26000001tkhg</masterLabel>
+        <masterLabel>00h26000001xjpj</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
