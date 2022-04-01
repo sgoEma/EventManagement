@@ -32,6 +32,8 @@
 		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
 		<members>Session_Registration__c.Attendee__c</members>
+		<members>Session_Registration__c.IsEventRegistered__c</members>
+		<members>Session_Registration__c.IsOverlaps__c</members>
 		<members>Session_Registration__c.JunctionID__c</members>
 		<members>Session_Registration__c.Session__c</members>
 		<members>Session__c.CSAT_Score__c</members>
@@ -101,6 +103,8 @@
 	</types>
 	<types>
 		<members>Public_Event__c.Start_Date_is_not_Null</members>
+		<members>Session_Registration__c.Event_Not_Registered</members>
+		<members>Session_Registration__c.Is_Overlaps_Check</members>
 		<members>Session__c.Compare_Start_and_End_Date</members>
 		<members>Session__c.Validate_Date</members>
 		<name>ValidationRule</name>

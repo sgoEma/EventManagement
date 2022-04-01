@@ -177,6 +177,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Session_Registration__c.IsEventRegistered__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Session_Registration__c.IsOverlaps__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Session_Registration__c.JunctionID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -231,6 +241,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Before_Delete_Event_Regs</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Before_Public_Event_Delete</flow>
     </flowAccesses>
     <flowAccesses>
@@ -239,7 +253,7 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Prevent_Duplicate_Session_Regs</flow>
+        <flow>Session_Registration_Validations</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
