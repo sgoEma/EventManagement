@@ -1,41 +1,39 @@
-import { LightningElement , wire, track, api} from 'lwc';
-
-import getEventLocations from '@salesforce/apex/DisplayMapController.getEventLocations';
-
+import { LightningElement , wire, track, api } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
+import { refreshApex } from '@salesforce/apex';
 export default class DisplayLWCMap extends LightningElement {
 
     @api recordId;
- 
+    @track publicEvent;
     @track error;   //this holds errors
-
     @track mapMarkers = [];
     @track zoomLevel = 10;
 
-    /* Load address information based on recordId from Controller */
-    @wire(getEventLocations, { eventIdInitial: '$recordId'})
-    wiredEventLocations({ error, data }) {
-        if (data) {            
-            data.forEach(dataItem => {
-                this.mapMarkers = [...this.mapMarkers ,
-                    {
-                        location: {
-                            Street: dataItem.Street__c,
-                            City: dataItem.City__c,
-                            Country: dataItem.Country__c,
-                            PostalCode: dataItem.PostalCode__c,
-
-                        },
-        
-                        icon: 'custom:custom11',
-                        title: dataItem.Name,
-                    }                                    
-                ];
-              });            
-            this.error = undefined;
+    @wire(getRecord, { recordId: '$recordId', fields: ['Public_Event__c.Street__c', 'Public_Event__c.City__c', 'Public_Event__c.Country__c', 'Public_Event__c.Postal_Code__c'] })
+    getpublicEvent({data,error}) {
+        console.log('publicEventRecord => ', data, error);
+        if (data) {
+            this.publicEvent = data;
+            this.mapMarkers = [
+                {
+                    location: {
+                        Street: this.publicEvent.fields.Street__c.value,
+                        City: this.publicEvent.fields.City__c.value,
+                        Country: this.publicEvent.fields.Country__c.value,
+                        PostalCode: this.publicEvent.fields.Postal_Code__c.value
+                    },
+                    icon: 'custom:custom11',
+                    title: this.publicEvent.fields.Name,
+                }                                    
+            ];
+            this.processRelatedObjects();
         } else if (error) {
-            this.error = error;
-            this.contacts = undefined;
+            console.error('ERROR => ', JSON.stringify(error)); // handle error properly
         }
     }
 
+    processRelatedObjects() {
+        console.log('processRelatedObjects for => ', JSON.stringify(this.publicEvent));
+        refreshApex(this.publicEvent);
+    }
 }
