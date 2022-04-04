@@ -91,6 +91,10 @@
 		<name>Profile</name>
 	</types>
 	<types>
+		<members>Contact.Update_Attendee</members>
+		<name>QuickAction</name>
+	</types>
+	<types>
 		<members>Contact.Attendee</members>
 		<members>Contact.Speaker</members>
 		<name>RecordType</name>

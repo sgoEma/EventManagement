@@ -185,6 +185,11 @@
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Contact.CNTC_FIRST_NAME</fields>
+        <fields>Contact.NAME</fields>
+        <fields>Contact.Contact_Type__c</fields>
+        <fields>Contact.Dietary_of_Contact__c</fields>
+        <fields>CREATED_DATE</fields>
         <relatedList>Session_Registration__c.Session__c</relatedList>
     </relatedLists>
     <relatedObjects>Public_Event__c</relatedObjects>
@@ -194,7 +199,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2z0000010TDN</masterLabel>
+        <masterLabel>00h26000001tz5P</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>2</sizeY>
         <summaryLayoutItems>
