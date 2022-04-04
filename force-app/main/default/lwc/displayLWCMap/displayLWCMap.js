@@ -11,7 +11,6 @@ export default class DisplayLWCMap extends LightningElement {
 
     @wire(getRecord, { recordId: '$recordId', fields: ['Public_Event__c.Street__c', 'Public_Event__c.City__c', 'Public_Event__c.Country__c', 'Public_Event__c.Postal_Code__c'] })
     getpublicEvent({data,error}) {
-        console.log('publicEventRecord => ', data, error);
         if (data) {
             this.publicEvent = data;
             this.mapMarkers = [
@@ -33,7 +32,6 @@ export default class DisplayLWCMap extends LightningElement {
     }
 
     processRelatedObjects() {
-        console.log('processRelatedObjects for => ', JSON.stringify(this.publicEvent));
         refreshApex(this.publicEvent);
     }
 }
