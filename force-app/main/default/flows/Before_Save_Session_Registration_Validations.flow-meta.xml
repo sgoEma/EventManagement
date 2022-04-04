@@ -42,13 +42,6 @@
                 <booleanValue>true</booleanValue>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.JunctionID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>CreateID</elementReference>
-            </value>
-        </assignmentItems>
     </assignments>
     <decisions>
         <name>Does_Overlaps</name>
@@ -61,7 +54,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Overlapsed</name>
-            <conditionLogic>4 AND ((2 AND (1) OR (NOT(2) AND (3)) ))</conditionLogic>
+            <conditionLogic>(2 AND 1) OR (NOT(2) AND 3)</conditionLogic>
             <conditions>
                 <leftValueReference>SREG_LOOP.Session__r.End_Date_Time__c</leftValueReference>
                 <operator>GreaterThanOrEqualTo</operator>
@@ -81,13 +74,6 @@
                 <operator>LessThan</operator>
                 <rightValue>
                     <elementReference>$Record.Session__r.End_Date_Time__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>SREG_LOOP.Id</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record.Id</elementReference>
                 </rightValue>
             </conditions>
             <connector>
@@ -215,7 +201,7 @@
             <targetReference>Get_Event_Registration</targetReference>
         </connector>
         <object>Session_Registration__c</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>

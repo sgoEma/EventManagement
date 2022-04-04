@@ -3,7 +3,7 @@
     <fullName>End_Date_Time__c</fullName>
     <externalId>false</externalId>
     <label>End Date Time</label>
-    <required>false</required>
+    <required>true</required>
     <trackTrending>false</trackTrending>
     <type>DateTime</type>
 </CustomField>

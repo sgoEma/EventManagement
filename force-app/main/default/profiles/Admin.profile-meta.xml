@@ -197,11 +197,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Session__c.End_Date_Time__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Session__c.Is_Mandatory__c</field>
         <readable>true</readable>
     </fieldPermissions>
