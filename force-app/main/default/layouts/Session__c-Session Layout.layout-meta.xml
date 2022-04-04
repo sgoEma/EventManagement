@@ -50,7 +50,7 @@
                 <field>Number_of_Registered_Attendee__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>End_Date_Time__c</field>
             </layoutItems>
             <layoutItems>

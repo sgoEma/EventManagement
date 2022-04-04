@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>End_Date_Time__c</fullName>
+    <fullName>IsOverlaps__c</fullName>
+    <defaultValue>false</defaultValue>
     <externalId>false</externalId>
-    <label>End Date Time</label>
-    <required>true</required>
+    <label>IsOverlaps</label>
     <trackTrending>false</trackTrending>
-    <type>DateTime</type>
+    <type>Checkbox</type>
 </CustomField>
