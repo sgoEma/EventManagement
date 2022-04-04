@@ -249,11 +249,11 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
+        <flow>Before_Save_Session_Registration_Validations</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Session_Registration_Validations</flow>
+        <flow>Create_Event_Registration_Id_Fill_Registration_Fee</flow>
     </flowAccesses>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>

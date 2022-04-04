@@ -124,8 +124,8 @@
         <dataType>String</dataType>
         <expression>Left({!$Record.Session__c},15)+Left({!$Record.Attendee__c},15)</expression>
     </formulas>
-    <interviewLabel>Session Registration Validations {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Session Registration Validations</label>
+    <interviewLabel>Session Registration Before Save Validations {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Before Save Session Registration Validations</label>
     <loops>
         <name>SREG_LOOP</name>
         <label>SREG LOOP</label>
