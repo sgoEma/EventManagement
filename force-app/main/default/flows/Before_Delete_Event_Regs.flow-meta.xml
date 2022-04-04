@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Add_Session_Registration_Record</name>
+        <label>Add Session Registration Record</label>
+        <locationX>264</locationX>
+        <locationY>671</locationY>
+        <assignmentItems>
+            <assignToReference>StoreRegistrationsToBeDeleted</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>loop</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>loop</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>To_Be_Deleted</name>
         <label>To Be Deleted</label>
-        <locationX>205</locationX>
-        <locationY>644</locationY>
+        <locationX>396</locationX>
+        <locationY>551</locationY>
         <defaultConnector>
             <targetReference>loop</targetReference>
         </defaultConnector>
@@ -21,7 +37,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Delete_Session_Registration</targetReference>
+                <targetReference>Add_Session_Registration_Record</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -31,13 +47,16 @@
     <loops>
         <name>loop</name>
         <label>loop</label>
-        <locationX>213</locationX>
-        <locationY>467</locationY>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
         <collectionReference>Get_Session_Registrations</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>To_Be_Deleted</targetReference>
         </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Delete_Session_Registrations</targetReference>
+        </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -48,7 +67,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -59,20 +78,17 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordDeletes>
-        <name>Delete_Session_Registration</name>
-        <label>Delete Session Registration</label>
-        <locationX>503</locationX>
-        <locationY>524</locationY>
-        <connector>
-            <targetReference>loop</targetReference>
-        </connector>
-        <inputReference>loop</inputReference>
+        <name>Delete_Session_Registrations</name>
+        <label>Delete Session Registrations</label>
+        <locationX>176</locationX>
+        <locationY>983</locationY>
+        <inputReference>StoreRegistrationsToBeDeleted</inputReference>
     </recordDeletes>
     <recordLookups>
         <name>Get_Session_Registrations</name>
         <label>Get Session Registrations</label>
-        <locationX>500</locationX>
-        <locationY>389</locationY>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>loop</targetReference>
@@ -90,8 +106,8 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>554</locationX>
-        <locationY>48</locationY>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>Get_Session_Registrations</targetReference>
         </connector>
@@ -100,4 +116,12 @@
         <triggerType>RecordBeforeDelete</triggerType>
     </start>
     <status>Active</status>
+    <variables>
+        <name>StoreRegistrationsToBeDeleted</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Session_Registration__c</objectType>
+    </variables>
 </Flow>
