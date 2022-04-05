@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Speakers</fullName>
+    <fullName>Attendees</fullName>
     <columns>CONTACT.SALUTATION</columns>
     <columns>FULL_NAME</columns>
-    <columns>ACCOUNT.NAME</columns>
     <columns>CONTACT.TITLE</columns>
+    <columns>ACCOUNT.NAME</columns>
     <columns>CONTACT.PHONE1</columns>
-    <columns>CONTACT.PHONE3</columns>
     <columns>CONTACT.EMAIL</columns>
-    <columns>CONTACT.RECORDTYPE</columns>
+    <columns>Dietary_of_Contact__c</columns>
     <columns>Contact_Type__c</columns>
+    <columns>CONTACT.RECORDTYPE</columns>
     <filterScope>Everything</filterScope>
     <filters>
         <field>CONTACT.RECORDTYPE</field>
         <operation>equals</operation>
-        <value>Contact.Speaker</value>
+        <value>Contact.Attendee</value>
     </filters>
-    <label>Speakers</label>
+    <label>Attendees</label>
 </ListView>

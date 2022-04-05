@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Public_Event__c</columns>
+    <columns>Start_Date_Time__c</columns>
+    <columns>End_Date_Time__c</columns>
+    <columns>Level__c</columns>
+    <columns>Is_Mandatory__c</columns>
+    <columns>CSAT_Score__c</columns>
+    <columns>Number_of_Registered_Attendee__c</columns>
+    <columns>Speaker__c</columns>
+    <columns>Room_Capacity__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>
