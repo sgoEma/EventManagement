@@ -84,7 +84,11 @@
 		<name>LightningComponentBundle</name>
 	</types>
 	<types>
+		<members>Contact.AllContacts</members>
+		<members>Contact.Attendees</members>
+		<members>Contact.Speakers</members>
 		<members>Event_Registration__c.All</members>
+		<members>Public_Event__c.All</members>
 		<members>Session__c.All</members>
 		<name>ListView</name>
 	</types>
