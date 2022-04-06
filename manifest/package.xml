@@ -20,8 +20,9 @@
 		<members>Event_Registration__c.Registration_Id__c</members>
 		<members>Public_Event__c.City__c</members>
 		<members>Public_Event__c.Country__c</members>
+		<members>Public_Event__c.Date_End__c</members>
+		<members>Public_Event__c.Date_Start__c</members>
 		<members>Public_Event__c.End_Date__c</members>
-		<members>Public_Event__c.Event_Id__c</members>
 		<members>Public_Event__c.Number_of_Registered_Attendee__c</members>
 		<members>Public_Event__c.Postal_Code__c</members>
 		<members>Public_Event__c.Revenue__c</members>
@@ -102,10 +103,6 @@
 		<name>MatchingRule</name>
 	</types>
 	<types>
-		<members>Public_Event__c</members>
-		<name>MatchingRules</name>
-	</types>
-	<types>
 		<members>Admin</members>
 		<name>Profile</name>
 	</types>
@@ -120,6 +117,7 @@
 	</types>
 	<types>
 		<members>Public_Event__c.Start_Date_is_not_Null</members>
+		<members>Session_Registration__c.Capacity_Check</members>
 		<members>Session_Registration__c.Event_Not_Registered</members>
 		<members>Session_Registration__c.Is_Overlaps_Check</members>
 		<members>Session__c.Compare_Start_and_End_Date</members>
