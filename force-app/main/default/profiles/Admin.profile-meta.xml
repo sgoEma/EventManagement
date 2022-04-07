@@ -147,6 +147,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Public_Event__c.Date_End__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Public_Event__c.Date_Start__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Public_Event__c.Number_of_Registered_Attendee__c</field>
         <readable>true</readable>
@@ -233,6 +243,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Delete_Event_Regs</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Before_Insert_Update_Public_Event</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
