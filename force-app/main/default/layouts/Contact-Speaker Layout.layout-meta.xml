@@ -300,7 +300,7 @@
     </relatedContent>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Session__c.Speaker__c</relatedList>
+        <relatedList>Session_Registration__c.Attendee__c</relatedList>
     </relatedLists>
     <relatedObjects>AccountId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
@@ -309,7 +309,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h3G000001DLFP</masterLabel>
+        <masterLabel>00h2z0000010cjh</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>2</sizeY>
         <summaryLayoutItems>

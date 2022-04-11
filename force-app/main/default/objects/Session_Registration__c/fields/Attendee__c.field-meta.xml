@@ -2,14 +2,25 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Attendee__c</fullName>
     <externalId>false</externalId>
-    <label>Attendee</label>
+    <label>Contact</label>
     <lookupFilter>
         <active>true</active>
-        <errorMessage>Contact type should be an attendee</errorMessage>
+        <booleanFilter>(1 AND 2) OR ( NOT (1) AND 3)</booleanFilter>
+        <errorMessage>Contact&apos;s record type should match with Session Registration&apos;s record type. Speaker -&gt; Speaker Registration, Attendee -&gt; Attendee Registration</errorMessage>
         <filterItems>
             <field>Contact.RecordTypeId</field>
             <operation>equals</operation>
-            <value>Attendee</value>
+            <value>Speaker</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Speaker Registration</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Attendee Registration</value>
         </filterItems>
         <isOptional>false</isOptional>
     </lookupFilter>

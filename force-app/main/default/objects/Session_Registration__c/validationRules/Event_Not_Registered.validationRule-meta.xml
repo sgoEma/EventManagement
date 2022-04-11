@@ -2,6 +2,6 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Event_Not_Registered</fullName>
     <active>true</active>
-    <errorConditionFormula>IsEventRegistered__c = FALSE</errorConditionFormula>
+    <errorConditionFormula>AND(IsEventRegistered__c = FALSE,  RecordType.Name  &lt;&gt; &quot;Speaker Registration&quot;)</errorConditionFormula>
     <errorMessage>Attendee must be registered to related event</errorMessage>
 </ValidationRule>
