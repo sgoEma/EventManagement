@@ -173,10 +173,10 @@
             <name>Speaker_Registration</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Speaker Registration</stringValue>
+                    <stringValue>Speaker_Registration</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -188,10 +188,10 @@
             <name>Attendee_Registration</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>$Record.RecordType.Name</leftValueReference>
+                <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Attendee Registration</stringValue>
+                    <stringValue>Attendee_Registration</stringValue>
                 </rightValue>
             </conditions>
             <connector>
