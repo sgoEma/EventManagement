@@ -3,6 +3,11 @@
     <fullName>Number_of_Registered_Attendee__c</fullName>
     <externalId>false</externalId>
     <label>Number of Registered Attendee</label>
+    <summaryFilterItems>
+        <field>Session_Registration__c.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>Attendee Registration</value>
+    </summaryFilterItems>
     <summaryForeignKey>Session_Registration__c.Session__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>
     <trackTrending>false</trackTrending>

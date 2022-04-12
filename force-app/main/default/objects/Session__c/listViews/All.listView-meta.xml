@@ -9,7 +9,6 @@
     <columns>Is_Mandatory__c</columns>
     <columns>CSAT_Score__c</columns>
     <columns>Number_of_Registered_Attendee__c</columns>
-    <columns>Speaker__c</columns>
     <columns>Room_Capacity__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
