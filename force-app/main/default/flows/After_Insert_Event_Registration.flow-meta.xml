@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Event_Reg_Notification</name>
+        <label>Event Reg Notification</label>
+        <locationX>879</locationX>
+        <locationY>522</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>Event_Type</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Contact__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderAddress</name>
+            <value>
+                <elementReference>$User.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>{!$Record.Public_Event__r.Name} registration is completed</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <apiVersion>54.0</apiVersion>
     <assignments>
         <name>Add_New_Session_Registrations</name>
         <label>Add New Session Registrations</label>
         <locationX>734</locationX>
-        <locationY>923</locationY>
+        <locationY>1179</locationY>
         <assignmentItems>
             <assignToReference>SessionRegistration</assignToReference>
             <operator>Add</operator>
@@ -21,7 +63,7 @@
         <name>New_Session_Registration</name>
         <label>New Session Registration</label>
         <locationX>994</locationX>
-        <locationY>923</locationY>
+        <locationY>1179</locationY>
         <assignmentItems>
             <assignToReference>SessionRegistrationn.Attendee__c</assignToReference>
             <operator>Assign</operator>
@@ -40,14 +82,62 @@
             <targetReference>Add_New_Session_Registrations</targetReference>
         </connector>
     </assignments>
-    <description>Auto Registration for Welcome Session at Dreamforce Events</description>
+    <decisions>
+        <name>Event_Type</name>
+        <label>Event Type</label>
+        <locationX>670</locationX>
+        <locationY>762</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Dreamforce</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Public_Event__r.Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Dreamforce</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Welcome_Session_Id</targetReference>
+            </connector>
+            <label>Dreamforce</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>If contact has email, we will send an email notification via email when event registration is done.</description>
+        <name>Notification_Channel</name>
+        <label>Notification Channel</label>
+        <locationX>672</locationX>
+        <locationY>523</locationY>
+        <defaultConnector>
+            <targetReference>Event_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Contact__r.Email</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Event_Reg_Notification</targetReference>
+            </connector>
+            <label>Email</label>
+        </rules>
+    </decisions>
+    <description>Auto Email Notification for Event Registration &amp; Auto Registration for Welcome Sessions at Dreamforce Events</description>
     <interviewLabel>After Insert Event Registration {!$Flow.CurrentDateTime}</interviewLabel>
     <label>After Insert Event Registration</label>
     <loops>
         <name>Mandatory_Sessions</name>
         <label>Mandatory Sessions</label>
         <locationX>992</locationX>
-        <locationY>684</locationY>
+        <locationY>940</locationY>
         <collectionReference>Get_Welcome_Session_Id</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -81,14 +171,14 @@
         <name>Register_for_Welcome_Session</name>
         <label>Register for Welcome Session</label>
         <locationX>1355</locationX>
-        <locationY>688</locationY>
+        <locationY>944</locationY>
         <inputReference>SessionRegistration</inputReference>
     </recordCreates>
     <recordLookups>
         <name>Get_Welcome_Session_Id</name>
         <label>Get Welcome Session Id</label>
         <locationX>992</locationX>
-        <locationY>508</locationY>
+        <locationY>764</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Mandatory_Sessions</targetReference>
@@ -107,24 +197,21 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>873</locationX>
+        <locationX>562</locationX>
         <locationY>50</locationY>
         <connector>
-            <targetReference>Get_Welcome_Session_Id</targetReference>
+            <targetReference>Notification_Channel</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Event_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Dreamforce</stringValue>
-            </value>
-        </filters>
         <object>Event_Registration__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;Hi &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Record.Contact__r.FirstName} {!$Record.Contact__r.LastName}&lt;/span&gt;,&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You have successfully registered to the&amp;nbsp;{!$Record.Public_Event__r.Name}&amp;nbsp;that takes place between&amp;nbsp;{!$Record.Public_Event__r.Start_Date__c}&amp;nbsp;and&amp;nbsp;{!$Record.Public_Event__r.End_Date__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Regards,&amp;nbsp;&lt;/p&gt;&lt;p&gt;{!$User.FirstName} {!$User.LastName}&lt;/p&gt;</text>
+    </textTemplates>
     <variables>
         <name>SessionRegistration</name>
         <dataType>SObject</dataType>
