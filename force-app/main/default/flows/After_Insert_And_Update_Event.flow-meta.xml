@@ -68,8 +68,8 @@
             <label>Email</label>
         </rules>
     </decisions>
-    <interviewLabel>After Insert Event {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>After Insert Event</label>
+    <interviewLabel>After Insert And Update Event {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>After Insert And Update Event</label>
     <loops>
         <name>EREG_LOOP</name>
         <label>EREG LOOP</label>

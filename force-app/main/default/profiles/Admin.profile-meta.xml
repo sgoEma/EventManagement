@@ -233,7 +233,7 @@
     </fieldPermissions>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>After_Insert_Event</flow>
+        <flow>After_Insert_And_Update_Event</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
