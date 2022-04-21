@@ -4,8 +4,8 @@
     <assignments>
         <name>Assign_JuncitonID_0</name>
         <label>Assign JuncitonID</label>
-        <locationX>622</locationX>
-        <locationY>1775</locationY>
+        <locationX>710</locationX>
+        <locationY>1991</locationY>
         <assignmentItems>
             <assignToReference>$Record.JunctionID__c</assignToReference>
             <operator>Assign</operator>
@@ -17,7 +17,7 @@
     <assignments>
         <name>Attendee_Registered</name>
         <label>Attendee Registered</label>
-        <locationX>666</locationX>
+        <locationX>798</locationX>
         <locationY>671</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsEventRegistered__c</assignToReference>
@@ -27,14 +27,14 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Session_Registrations</targetReference>
+            <targetReference>Is_Mandatory</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Set_Overlapsed</name>
         <label>Set Overlapsed</label>
         <locationX>754</locationX>
-        <locationY>1151</locationY>
+        <locationY>1271</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsOverlaps__c</assignToReference>
             <operator>Assign</operator>
@@ -60,7 +60,7 @@
         <name>Does_Overlaps</name>
         <label>Does Overlaps</label>
         <locationX>886</locationX>
-        <locationY>1031</locationY>
+        <locationY>1151</locationY>
         <defaultConnector>
             <targetReference>SREG_LOOP</targetReference>
         </defaultConnector>
@@ -96,9 +96,34 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_Mandatory</name>
+        <label>Is Mandatory</label>
+        <locationX>798</locationX>
+        <locationY>791</locationY>
+        <defaultConnector>
+            <targetReference>Assign_JuncitonID_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Mandatory</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Session__r.Is_Mandatory__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Session_Registrations</targetReference>
+            </connector>
+            <label>Not Mandatory</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Registered</name>
         <label>Is Registered</label>
-        <locationX>798</locationX>
+        <locationX>952</locationX>
         <locationY>551</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -159,7 +184,7 @@
     <decisions>
         <name>Which_Record_Type</name>
         <label>Which Record Type?</label>
-        <locationX>622</locationX>
+        <locationX>710</locationX>
         <locationY>311</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -229,7 +254,7 @@
         <name>SREG_LOOP</name>
         <label>SREG LOOP</label>
         <locationX>666</locationX>
-        <locationY>911</locationY>
+        <locationY>1031</locationY>
         <collectionReference>Get_Session_Registrations</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -261,7 +286,7 @@
     <recordLookups>
         <name>Get_Event_Registration</name>
         <label>Get Event Registration</label>
-        <locationX>798</locationX>
+        <locationX>952</locationX>
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -311,7 +336,7 @@
         <name>Get_Session_Registrations</name>
         <label>Get Session Registrations</label>
         <locationX>666</locationX>
-        <locationY>791</locationY>
+        <locationY>911</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>SREG_LOOP</targetReference>
@@ -329,7 +354,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>496</locationX>
+        <locationX>584</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Which_Record_Type</targetReference>
