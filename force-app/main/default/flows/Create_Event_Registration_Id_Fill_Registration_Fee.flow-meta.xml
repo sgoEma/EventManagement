@@ -2,11 +2,43 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
     <assignments>
+        <name>Cancelled</name>
+        <label>Cancelled</label>
+        <locationX>1076</locationX>
+        <locationY>665</locationY>
+        <assignmentItems>
+            <assignToReference>Session_Registration_Loop.Cancelled__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Unique_Id</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Cancelled_Text</name>
+        <label>Cancelled Text</label>
+        <locationX>757</locationX>
+        <locationY>560</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Cancelled_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Cancelled__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Unique_Id</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Create Unique Id from Public Event Id &amp; Contact Id</description>
         <name>Create_Unique_Id</name>
         <label>Create Unique Id</label>
-        <locationX>1045</locationX>
-        <locationY>668</locationY>
+        <locationX>314</locationX>
+        <locationY>650</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Id__c</assignToReference>
             <operator>Assign</operator>
@@ -21,8 +53,8 @@
     <assignments>
         <name>Update_Customer_Registration_Fee_Update</name>
         <label>Update Customer Registration Fee Update</label>
-        <locationX>457</locationX>
-        <locationY>879</locationY>
+        <locationX>60</locationX>
+        <locationY>987</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -34,8 +66,8 @@
     <assignments>
         <name>Update_Employee_Registration_Fee_Update</name>
         <label>Update Employee Registration Fee Update</label>
-        <locationX>1678</locationX>
-        <locationY>871</locationY>
+        <locationX>588</locationX>
+        <locationY>987</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -47,8 +79,8 @@
     <assignments>
         <name>Update_Partner_Registration_Fee_Update</name>
         <label>Update Partner Registration Fee Update</label>
-        <locationX>1043</locationX>
-        <locationY>1155</locationY>
+        <locationX>324</locationX>
+        <locationY>987</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -60,8 +92,8 @@
     <decisions>
         <name>Desicion_1</name>
         <label>Desicion 1</label>
-        <locationX>1035</locationX>
-        <locationY>877</locationY>
+        <locationX>314</locationX>
+        <locationY>770</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Custom_Registration_Fee</name>
@@ -122,11 +154,56 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Id_Check</name>
-        <label>Id Check</label>
-        <locationX>1034</locationX>
-        <locationY>440</locationY>
+        <description>Event cancellation status and registration id are checked</description>
+        <name>Registration_Id_Cancellation_are_Checked</name>
+        <label>Registration Id &amp; Cancellation are Checked</label>
+        <locationX>747</locationX>
+        <locationY>367</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cancellation_Changed_to_True</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sessions</targetReference>
+            </connector>
+            <label>Cancellation Changed to True</label>
+        </rules>
+        <rules>
+            <name>Cancellation_Changed_to_False</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cancelled_Text</targetReference>
+            </connector>
+            <label>Cancellation Changed to False</label>
+        </rules>
         <rules>
             <name>Contact_or_Public_Event_Change_or_Registration_Id_is_Null</name>
             <conditionLogic>1 OR 2 OR 3</conditionLogic>
@@ -164,6 +241,28 @@
     </formulas>
     <interviewLabel>Create Event Registration Id &amp; Fill Registration Fee {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Create Event Registration Id &amp; Fill Registration Fee</label>
+    <loops>
+        <name>Session_Loop</name>
+        <label>Session Loop</label>
+        <locationX>1077</locationX>
+        <locationY>509</locationY>
+        <collectionReference>Sessions</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Session_Registrations</targetReference>
+        </nextValueConnector>
+    </loops>
+    <loops>
+        <name>Session_Registration_Loop</name>
+        <label>Session Registration Loop</label>
+        <locationX>1342</locationX>
+        <locationY>664</locationY>
+        <collectionReference>Session_Registrations</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Cancelled</targetReference>
+        </nextValueConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -183,15 +282,66 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Session_Registrations</name>
+        <label>Session Registrations</label>
+        <locationX>1341</locationX>
+        <locationY>509</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Session_Registration_Loop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Attendee__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Session__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Session_Loop.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Session_Registration__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Sessions</name>
+        <label>Sessions</label>
+        <locationX>1076</locationX>
+        <locationY>363</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Session_Loop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Public_Event__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Public_Event__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Session__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
-        <locationX>924</locationX>
+        <locationX>637</locationX>
         <locationY>50</locationY>
         <connector>
-            <targetReference>Id_Check</targetReference>
+            <targetReference>Registration_Id_Cancellation_are_Checked</targetReference>
         </connector>
         <object>Event_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

@@ -122,6 +122,16 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Event_Registration__c.Cancelled_Text__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Event_Registration__c.Cancelled__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Event_Registration__c.Contact_Type__c</field>
         <readable>true</readable>
@@ -183,6 +193,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Session_Registration__c.Cancelled__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Session_Registration__c.IsEventRegistered__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -233,7 +248,11 @@
     </fieldPermissions>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>After_Insert_Event_Registration</flow>
+        <flow>After_Insert_And_Update_Event</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>After_Insert_Update_Event_Registration</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>

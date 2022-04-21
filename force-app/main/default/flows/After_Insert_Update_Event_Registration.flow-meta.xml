@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Event_Reg_Notification</name>
         <label>Event Reg Notification</label>
-        <locationX>879</locationX>
-        <locationY>522</locationY>
+        <locationX>22</locationX>
+        <locationY>623</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <connector>
@@ -44,10 +44,26 @@
     </actionCalls>
     <apiVersion>54.0</apiVersion>
     <assignments>
+        <name>Add_Cancelled_Session_Registrations</name>
+        <label>Add Cancelled Session Registrations</label>
+        <locationX>1078</locationX>
+        <locationY>1103</locationY>
+        <assignmentItems>
+            <assignToReference>CancelledSessionRegistrations</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Session_Registration_Loop</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Session_Registration_Loop</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Add_New_Session_Registrations</name>
         <label>Add New Session Registrations</label>
-        <locationX>734</locationX>
-        <locationY>1179</locationY>
+        <locationX>110</locationX>
+        <locationY>1319</locationY>
         <assignmentItems>
             <assignToReference>SessionRegistration</assignToReference>
             <operator>Add</operator>
@@ -60,10 +76,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Cancelled_Session_Registrations</name>
+        <label>Cancelled Session Registrations</label>
+        <locationX>1078</locationX>
+        <locationY>983</locationY>
+        <assignmentItems>
+            <assignToReference>Session_Registration_Loop.Cancelled__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Cancelled_Session_Registrations</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>New_Session_Registration</name>
         <label>New Session Registration</label>
-        <locationX>994</locationX>
-        <locationY>1179</locationY>
+        <locationX>110</locationX>
+        <locationY>1199</locationY>
         <assignmentItems>
             <assignToReference>SessionRegistrationn.Attendee__c</assignToReference>
             <operator>Assign</operator>
@@ -85,8 +117,8 @@
     <decisions>
         <name>Event_Type</name>
         <label>Event Type</label>
-        <locationX>670</locationX>
-        <locationY>762</locationY>
+        <locationX>154</locationX>
+        <locationY>839</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Dreamforce</name>
@@ -105,11 +137,48 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Insert_or_Update</name>
+        <label>Insert or Update</label>
+        <locationX>616</locationX>
+        <locationY>383</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Notification_Channel</targetReference>
+            </connector>
+            <label>Insert</label>
+        </rules>
+        <rules>
+            <name>Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sessions_of_Event</targetReference>
+            </connector>
+            <label>Update</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>If contact has email, we will send an email notification via email when event registration is done.</description>
         <name>Notification_Channel</name>
         <label>Notification Channel</label>
-        <locationX>672</locationX>
-        <locationY>523</locationY>
+        <locationX>154</locationX>
+        <locationY>503</locationY>
         <defaultConnector>
             <targetReference>Event_Type</targetReference>
         </defaultConnector>
@@ -130,14 +199,22 @@
             <label>Email</label>
         </rules>
     </decisions>
-    <description>Auto Email Notification for Event Registration &amp; Auto Registration for Welcome Sessions at Dreamforce Events</description>
-    <interviewLabel>After Insert Event Registration {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>After Insert Event Registration</label>
+    <description>-Insert:
+Auto Email Notification for Event Registration &amp; Auto Registration for Welcome Sessions at Dreamforce Events
+-Update:
+Auto Cancellation for session registrations under cancelled event registrations</description>
+    <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <interviewLabel>After Insert Update Event Registration {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>After Insert Update Event Registration</label>
     <loops>
         <name>Mandatory_Sessions</name>
         <label>Mandatory Sessions</label>
-        <locationX>992</locationX>
-        <locationY>940</locationY>
+        <locationX>22</locationX>
+        <locationY>1079</locationY>
         <collectionReference>Get_Welcome_Session_Id</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -145,6 +222,34 @@
         </nextValueConnector>
         <noMoreValuesConnector>
             <targetReference>Register_for_Welcome_Session</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Session_Loop</name>
+        <label>Session Loop</label>
+        <locationX>814</locationX>
+        <locationY>623</locationY>
+        <collectionReference>Sessions_of_Event</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Get_Session_Registrations</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Update_Cancelled_Session_Registrations</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Session_Registration_Loop</name>
+        <label>Session Registration Loop</label>
+        <locationX>990</locationX>
+        <locationY>863</locationY>
+        <collectionReference>Get_Session_Registrations</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Cancelled_Session_Registrations</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Session_Loop</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processMetadataValues>
@@ -170,15 +275,44 @@
         <description>Attendee who registers for a Dreamforce event will be registered automatically for the Welcome session under the Dreamforce event</description>
         <name>Register_for_Welcome_Session</name>
         <label>Register for Welcome Session</label>
-        <locationX>1355</locationX>
-        <locationY>944</locationY>
+        <locationX>22</locationX>
+        <locationY>1535</locationY>
         <inputReference>SessionRegistration</inputReference>
     </recordCreates>
     <recordLookups>
+        <name>Get_Session_Registrations</name>
+        <label>Get Session Registrations</label>
+        <locationX>990</locationX>
+        <locationY>743</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Session_Registration_Loop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Attendee__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Contact__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Session__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Session_Loop.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Session_Registration__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Welcome_Session_Id</name>
         <label>Get Welcome Session Id</label>
-        <locationX>992</locationX>
-        <locationY>764</locationY>
+        <locationX>22</locationX>
+        <locationY>959</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Mandatory_Sessions</targetReference>
@@ -196,14 +330,43 @@
         <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <start>
-        <locationX>562</locationX>
-        <locationY>50</locationY>
+    <recordLookups>
+        <name>Sessions_of_Event</name>
+        <label>Sessions of Event</label>
+        <locationX>814</locationX>
+        <locationY>503</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Notification_Channel</targetReference>
+            <targetReference>Session_Loop</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Public_Event__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Public_Event__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Session__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_Cancelled_Session_Registrations</name>
+        <label>Update Cancelled Session Registrations</label>
+        <locationX>814</locationX>
+        <locationY>1415</locationY>
+        <inputReference>CancelledSessionRegistrations</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>490</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Insert_or_Update</targetReference>
         </connector>
         <object>Event_Registration__c</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
@@ -212,6 +375,14 @@
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;Hi &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!$Record.Contact__r.FirstName} {!$Record.Contact__r.LastName}&lt;/span&gt;,&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;You have successfully registered to the&amp;nbsp;{!$Record.Public_Event__r.Name}&amp;nbsp;that takes place between&amp;nbsp;{!$Record.Public_Event__r.Start_Date__c}&amp;nbsp;and&amp;nbsp;{!$Record.Public_Event__r.End_Date__c}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Regards,&amp;nbsp;&lt;/p&gt;&lt;p&gt;{!$User.FirstName} {!$User.LastName}&lt;/p&gt;</text>
     </textTemplates>
+    <variables>
+        <name>CancelledSessionRegistrations</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Session_Registration__c</objectType>
+    </variables>
     <variables>
         <name>SessionRegistration</name>
         <dataType>SObject</dataType>

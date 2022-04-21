@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cancelled__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Session&apos;s cancellation is checked</description>
+    <externalId>false</externalId>
+    <inlineHelpText>If you want to cancel the session registration, tick the checkbox.</inlineHelpText>
+    <label>Cancelled</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>
