@@ -2,11 +2,27 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>54.0</apiVersion>
     <assignments>
+        <name>Cancelled_Text</name>
+        <label>Cancelled Text</label>
+        <locationX>983</locationX>
+        <locationY>408</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Cancelled_Text__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Cancelled__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Id_Check</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Create Unique Id from Public Event Id &amp; Contact Id</description>
         <name>Create_Unique_Id</name>
         <label>Create Unique Id</label>
-        <locationX>1045</locationX>
-        <locationY>668</locationY>
+        <locationX>720</locationX>
+        <locationY>819</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Id__c</assignToReference>
             <operator>Assign</operator>
@@ -21,8 +37,8 @@
     <assignments>
         <name>Update_Customer_Registration_Fee_Update</name>
         <label>Update Customer Registration Fee Update</label>
-        <locationX>457</locationX>
-        <locationY>879</locationY>
+        <locationX>446</locationX>
+        <locationY>1125</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -34,8 +50,8 @@
     <assignments>
         <name>Update_Employee_Registration_Fee_Update</name>
         <label>Update Employee Registration Fee Update</label>
-        <locationX>1678</locationX>
-        <locationY>871</locationY>
+        <locationX>974</locationX>
+        <locationY>1125</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -47,8 +63,8 @@
     <assignments>
         <name>Update_Partner_Registration_Fee_Update</name>
         <label>Update Partner Registration Fee Update</label>
-        <locationX>1043</locationX>
-        <locationY>1155</locationY>
+        <locationX>721</locationX>
+        <locationY>1215</locationY>
         <assignmentItems>
             <assignToReference>$Record.Registration_Fee__c</assignToReference>
             <operator>Assign</operator>
@@ -58,10 +74,36 @@
         </assignmentItems>
     </assignments>
     <decisions>
+        <description>Check the event registration&apos;s cancellation status is changed or not.</description>
+        <name>Cancellation_Status_Changed</name>
+        <label>Cancellation Status Changed</label>
+        <locationX>709</locationX>
+        <locationY>404</locationY>
+        <defaultConnector>
+            <targetReference>Id_Check</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cancelled_Text</targetReference>
+            </connector>
+            <label>Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Desicion_1</name>
         <label>Desicion 1</label>
-        <locationX>1035</locationX>
-        <locationY>877</locationY>
+        <locationX>710</locationX>
+        <locationY>1005</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Custom_Registration_Fee</name>
@@ -124,8 +166,8 @@
     <decisions>
         <name>Id_Check</name>
         <label>Id Check</label>
-        <locationX>1034</locationX>
-        <locationY>440</locationY>
+        <locationX>710</locationX>
+        <locationY>604</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Contact_or_Public_Event_Change_or_Registration_Id_is_Null</name>
@@ -157,6 +199,9 @@
             <label>Contact or Public Event Change or Registration Id is Null</label>
         </rules>
     </decisions>
+    <description>Create registration Id,
+Set registration fee,
+Set cancelled text.</description>
     <formulas>
         <name>ContactId_15DigitPublicEventId_15Digit</name>
         <dataType>String</dataType>
@@ -184,10 +229,10 @@
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>924</locationX>
+        <locationX>599</locationX>
         <locationY>50</locationY>
         <connector>
-            <targetReference>Id_Check</targetReference>
+            <targetReference>Cancellation_Status_Changed</targetReference>
         </connector>
         <object>Event_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
