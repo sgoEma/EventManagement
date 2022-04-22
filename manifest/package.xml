@@ -11,6 +11,8 @@
 	<types>
 		<members>Contact.Contact_Type__c</members>
 		<members>Contact.Dietary_of_Contact__c</members>
+		<members>Event_Registration__c.Cancelled_Text__c</members>
+		<members>Event_Registration__c.Cancelled__c</members>
 		<members>Event_Registration__c.Contact_Type__c</members>
 		<members>Event_Registration__c.Contact__c</members>
 		<members>Event_Registration__c.Dietary_of_Contact__c</members>
@@ -30,6 +32,7 @@
 		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
 		<members>Session_Registration__c.Attendee__c</members>
+		<members>Session_Registration__c.Cancelled__c</members>
 		<members>Session_Registration__c.IsEventRegistered__c</members>
 		<members>Session_Registration__c.IsOverlaps__c</members>
 		<members>Session_Registration__c.JunctionID__c</members>
@@ -59,6 +62,7 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Event_Registration__c.Event_Registration_Rule</members>
 		<members>Public_Event__c.Prevent_Duplicate</members>
 		<name>DuplicateRule</name>
 	</types>
@@ -98,6 +102,7 @@
 		<name>ListView</name>
 	</types>
 	<types>
+		<members>Event_Registration__c.Event_Registration_Rule_matching_rule</members>
 		<members>Public_Event__c.Public_Event_Matching_Rule</members>
 		<name>MatchingRule</name>
 	</types>

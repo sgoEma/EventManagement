@@ -3,5 +3,5 @@
     <fullName>Event_Not_Registered</fullName>
     <active>true</active>
     <errorConditionFormula>AND(IsEventRegistered__c = FALSE,  RecordType.Name  &lt;&gt; &quot;Speaker Registration&quot;)</errorConditionFormula>
-    <errorMessage>Attendee must be registered to related event</errorMessage>
+    <errorMessage>Attendee must have active registration to related event</errorMessage>
 </ValidationRule>
