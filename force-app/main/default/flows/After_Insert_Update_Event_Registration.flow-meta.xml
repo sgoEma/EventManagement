@@ -46,8 +46,8 @@
     <assignments>
         <name>Add_Cancelled_Session_Registrations</name>
         <label>Add Cancelled Session Registrations</label>
-        <locationX>1078</locationX>
-        <locationY>1103</locationY>
+        <locationX>1101</locationX>
+        <locationY>1238</locationY>
         <assignmentItems>
             <assignToReference>CancelledSessionRegistrations</assignToReference>
             <operator>Add</operator>
@@ -78,8 +78,8 @@
     <assignments>
         <name>Cancelled_Session_Registrations</name>
         <label>Cancelled Session Registrations</label>
-        <locationX>1078</locationX>
-        <locationY>983</locationY>
+        <locationX>1101</locationX>
+        <locationY>1118</locationY>
         <assignmentItems>
             <assignToReference>Session_Registration_Loop.Cancelled__c</assignToReference>
             <operator>Assign</operator>
@@ -114,6 +114,29 @@
             <targetReference>Add_New_Session_Registrations</targetReference>
         </connector>
     </assignments>
+    <decisions>
+        <description>Check the event registration status.</description>
+        <name>Cancelled_or_Active</name>
+        <label>Cancelled or Active</label>
+        <locationX>827</locationX>
+        <locationY>385</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sessions_of_Event</targetReference>
+            </connector>
+            <label>Cancelled</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>Event_Type</name>
         <label>Event Type</label>
@@ -168,7 +191,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Sessions_of_Event</targetReference>
+                <targetReference>Cancelled_or_Active</targetReference>
             </connector>
             <label>Update</label>
         </rules>
@@ -227,8 +250,8 @@ Auto Cancellation for session registrations under cancelled event registrations<
     <loops>
         <name>Session_Loop</name>
         <label>Session Loop</label>
-        <locationX>814</locationX>
-        <locationY>623</locationY>
+        <locationX>837</locationX>
+        <locationY>758</locationY>
         <collectionReference>Sessions_of_Event</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -241,8 +264,8 @@ Auto Cancellation for session registrations under cancelled event registrations<
     <loops>
         <name>Session_Registration_Loop</name>
         <label>Session Registration Loop</label>
-        <locationX>990</locationX>
-        <locationY>863</locationY>
+        <locationX>1013</locationX>
+        <locationY>998</locationY>
         <collectionReference>Get_Session_Registrations</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -282,8 +305,8 @@ Auto Cancellation for session registrations under cancelled event registrations<
     <recordLookups>
         <name>Get_Session_Registrations</name>
         <label>Get Session Registrations</label>
-        <locationX>990</locationX>
-        <locationY>743</locationY>
+        <locationX>1013</locationX>
+        <locationY>878</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Session_Registration_Loop</targetReference>
@@ -333,8 +356,8 @@ Auto Cancellation for session registrations under cancelled event registrations<
     <recordLookups>
         <name>Sessions_of_Event</name>
         <label>Sessions of Event</label>
-        <locationX>814</locationX>
-        <locationY>503</locationY>
+        <locationX>837</locationX>
+        <locationY>638</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Session_Loop</targetReference>
@@ -355,8 +378,8 @@ Auto Cancellation for session registrations under cancelled event registrations<
     <recordUpdates>
         <name>Update_Cancelled_Session_Registrations</name>
         <label>Update Cancelled Session Registrations</label>
-        <locationX>814</locationX>
-        <locationY>1415</locationY>
+        <locationX>837</locationX>
+        <locationY>1550</locationY>
         <inputReference>CancelledSessionRegistrations</inputReference>
     </recordUpdates>
     <start>
