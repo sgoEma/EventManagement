@@ -11,6 +11,8 @@
 	<types>
 		<members>Contact.Contact_Type__c</members>
 		<members>Contact.Dietary_of_Contact__c</members>
+		<members>Contact.Email__c</members>
+		<members>Contact.Phone__c</members>
 		<members>Event_Registration__c.Cancelled_Text__c</members>
 		<members>Event_Registration__c.Cancelled__c</members>
 		<members>Event_Registration__c.Contact_Type__c</members>
@@ -122,6 +124,7 @@
 		<name>RecordType</name>
 	</types>
 	<types>
+		<members>Contact.Communication_Preference</members>
 		<members>Public_Event__c.Start_Date_is_not_Null</members>
 		<members>Session_Registration__c.Capacity_Check</members>
 		<members>Session_Registration__c.Event_Not_Registered</members>
