@@ -5,12 +5,12 @@
     <errorConditionFormula>OR(
 AND
 ( 
-Email__c = True,
+Email_Opt_In__c = True,
 ISBLANK( Email ) 
 ),
 AND
 ( 
-Phone__c  = True,
+Phone_Opt_In__c  = True,
 ISBLANK(  Phone  ) 
 )
 )</errorConditionFormula>
