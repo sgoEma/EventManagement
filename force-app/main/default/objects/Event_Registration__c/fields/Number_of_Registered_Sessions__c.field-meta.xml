@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>JunctionID__c</fullName>
-    <description>Unique ID field for attendee and session pair</description>
+    <fullName>Number_of_Registered_Sessions__c</fullName>
+    <defaultValue>0</defaultValue>
     <externalId>false</externalId>
-    <label>JunctionID</label>
-    <length>30</length>
+    <label>Number of Registered Sessions</label>
+    <precision>18</precision>
     <required>false</required>
+    <scale>0</scale>
     <trackTrending>false</trackTrending>
-    <type>Text</type>
+    <type>Number</type>
     <unique>false</unique>
 </CustomField>

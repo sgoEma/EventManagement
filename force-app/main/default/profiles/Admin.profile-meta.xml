@@ -157,6 +157,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Registration__c.Number_of_Registered_Sessions__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Event_Registration__c.Registration_Fee__c</field>
         <readable>true</readable>
@@ -199,6 +204,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Public_Event__c.Street__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Session_Registration__c.Cancelled_Text__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -266,6 +276,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>After_Save_and_Update_Session_Registration</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Before_Delete_Event_Regs</flow>
     </flowAccesses>
     <flowAccesses>
@@ -274,11 +288,11 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Before_Public_Event_Delete</flow>
+        <flow>Before_Insert_and_Update_Session_Registration</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
-        <flow>Before_Save_Session_Registration_Validations</flow>
+        <flow>Before_Public_Event_Delete</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>

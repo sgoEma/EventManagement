@@ -8,6 +8,11 @@
         <operation>equals</operation>
         <value>Attendee Registration</value>
     </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Session_Registration__c.Cancelled__c</field>
+        <operation>equals</operation>
+        <value>False</value>
+    </summaryFilterItems>
     <summaryForeignKey>Session_Registration__c.Session__c</summaryForeignKey>
     <summaryOperation>count</summaryOperation>
     <trackTrending>false</trackTrending>
