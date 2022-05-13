@@ -31,6 +31,30 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>createQuickActionName</name>
+                    <value>NewContact</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>lookupFieldName</name>
+                    <value>Session_Registration__c.Attendee__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>titleFieldName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>updateQuickActionName</name>
+                    <value>Contact._LightningRelatedContact</value>
+                </componentInstanceProperties>
+                <componentName>console:relatedRecord</componentName>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-02614ccc-e2df-476f-aeff-12009c78f447</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
@@ -118,7 +142,7 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <name>Facet-02614ccc-e2df-476f-aeff-12009c78f447</name>
+        <name>Facet-970f872c-7c22-4ce8-be64-62c1ae97f024</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -127,6 +151,23 @@
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-02614ccc-e2df-476f-aeff-12009c78f447</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.relatedLists</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-970f872c-7c22-4ce8-be64-62c1ae97f024</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
