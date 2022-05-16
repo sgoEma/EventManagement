@@ -284,6 +284,10 @@
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
+        <flow>Before_Delete_Session_Registrations</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
         <flow>Before_Insert_Update_Public_Event</flow>
     </flowAccesses>
     <flowAccesses>

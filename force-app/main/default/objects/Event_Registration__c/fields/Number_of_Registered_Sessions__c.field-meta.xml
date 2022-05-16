@@ -4,7 +4,7 @@
     <defaultValue>0</defaultValue>
     <externalId>false</externalId>
     <label>Number of Registered Sessions</label>
-    <precision>18</precision>
+    <precision>10</precision>
     <required>false</required>
     <scale>0</scale>
     <trackTrending>false</trackTrending>
