@@ -4,8 +4,8 @@
     <assignments>
         <name>Assign_JuncitonID_0</name>
         <label>Assign JuncitonID</label>
-        <locationX>710</locationX>
-        <locationY>1991</locationY>
+        <locationX>814</locationX>
+        <locationY>2231</locationY>
         <assignmentItems>
             <assignToReference>$Record.JunctionID__c</assignToReference>
             <operator>Assign</operator>
@@ -17,8 +17,8 @@
     <assignments>
         <name>Attendee_Registered</name>
         <label>Attendee Registered</label>
-        <locationX>798</locationX>
-        <locationY>671</locationY>
+        <locationX>902</locationX>
+        <locationY>911</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsEventRegistered__c</assignToReference>
             <operator>Assign</operator>
@@ -27,14 +27,27 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Is_Mandatory</targetReference>
+            <targetReference>Is_Overlap_Check_Required</targetReference>
         </connector>
+    </assignments>
+    <assignments>
+        <name>Not_Registered</name>
+        <label>Not Registered</label>
+        <locationX>1210</locationX>
+        <locationY>911</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IsEventRegistered__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
     </assignments>
     <assignments>
         <name>Set_Overlapsed</name>
         <label>Set Overlapsed</label>
-        <locationX>754</locationX>
-        <locationY>1271</locationY>
+        <locationX>858</locationX>
+        <locationY>1511</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsOverlaps__c</assignToReference>
             <operator>Assign</operator>
@@ -46,8 +59,8 @@
     <assignments>
         <name>Set_Overlapsed_0</name>
         <label>Set Overlapsed</label>
-        <locationX>138</locationX>
-        <locationY>791</locationY>
+        <locationX>242</locationX>
+        <locationY>1031</locationY>
         <assignmentItems>
             <assignToReference>$Record.IsOverlaps__c</assignToReference>
             <operator>Assign</operator>
@@ -59,8 +72,8 @@
     <decisions>
         <name>Does_Overlaps</name>
         <label>Does Overlaps</label>
-        <locationX>886</locationX>
-        <locationY>1151</locationY>
+        <locationX>990</locationX>
+        <locationY>1391</locationY>
         <defaultConnector>
             <targetReference>SREG_LOOP</targetReference>
         </defaultConnector>
@@ -96,16 +109,38 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Is_Mandatory</name>
-        <label>Is Mandatory</label>
-        <locationX>798</locationX>
-        <locationY>791</locationY>
+        <name>Is_Cancelled</name>
+        <label>Is Cancelled</label>
+        <locationX>176</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Which_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Cancelled</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>Cancelled</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Overlap_Check_Required</name>
+        <label>Is Overlap Check Required</label>
+        <locationX>902</locationX>
+        <locationY>1031</locationY>
         <defaultConnector>
             <targetReference>Assign_JuncitonID_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Not_Mandatory</name>
+            <name>Overlap_Check_Required</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Session__r.Is_Mandatory__c</leftValueReference>
@@ -114,17 +149,27 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
             <connector>
                 <targetReference>Get_Session_Registrations</targetReference>
             </connector>
-            <label>Not Mandatory</label>
+            <label>Overlap Check Required</label>
         </rules>
     </decisions>
     <decisions>
         <name>Is_Registered</name>
         <label>Is Registered</label>
-        <locationX>952</locationX>
-        <locationY>551</locationY>
+        <locationX>1056</locationX>
+        <locationY>791</locationY>
+        <defaultConnector>
+            <targetReference>Not_Registered</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Yes</name>
@@ -132,13 +177,6 @@
             <conditions>
                 <leftValueReference>Get_Event_Registration</leftValueReference>
                 <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Event_Registration.Cancelled__c</leftValueReference>
-                <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>
                 </rightValue>
@@ -152,8 +190,8 @@
     <decisions>
         <name>Speaker_Overlapping</name>
         <label>Speaker Overlap</label>
-        <locationX>270</locationX>
-        <locationY>671</locationY>
+        <locationX>374</locationX>
+        <locationY>911</locationY>
         <defaultConnector>
             <targetReference>Speaker_Reg_Loop</targetReference>
         </defaultConnector>
@@ -191,8 +229,8 @@
     <decisions>
         <name>Which_Record_Type</name>
         <label>Which Record Type?</label>
-        <locationX>710</locationX>
-        <locationY>311</locationY>
+        <locationX>814</locationX>
+        <locationY>551</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Speaker_Registration</name>
@@ -232,6 +270,11 @@
         <expression>Left({!$Record.Session__c},15)+Left({!$Record.Attendee__c},15)</expression>
     </formulas>
     <formulas>
+        <name>ISNEW</name>
+        <dataType>Boolean</dataType>
+        <expression>ISNEW()</expression>
+    </formulas>
+    <formulas>
         <name>OneHourAfter</name>
         <dataType>DateTime</dataType>
         <expression>{!$Record.Session__r.End_Date_Time__c} + (1/24)</expression>
@@ -241,13 +284,13 @@
         <dataType>DateTime</dataType>
         <expression>{!$Record.Session__r.Start_Date_Time__c} - (1/24)</expression>
     </formulas>
-    <interviewLabel>Session Registration Before Save Validations {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Before Save Session Registration Validations</label>
+    <interviewLabel>Before Insert and Update Session Registration {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Before Insert and Update Session Registration</label>
     <loops>
         <name>Speaker_Reg_Loop</name>
         <label>Speaker Reg Loop</label>
-        <locationX>50</locationX>
-        <locationY>551</locationY>
+        <locationX>154</locationX>
+        <locationY>791</locationY>
         <collectionReference>Get_Related_Registrations</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -260,8 +303,8 @@
     <loops>
         <name>SREG_LOOP</name>
         <label>SREG LOOP</label>
-        <locationX>666</locationX>
-        <locationY>1031</locationY>
+        <locationX>770</locationX>
+        <locationY>1271</locationY>
         <collectionReference>Get_Session_Registrations</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -293,8 +336,8 @@
     <recordLookups>
         <name>Get_Event_Registration</name>
         <label>Get Event Registration</label>
-        <locationX>952</locationX>
-        <locationY>431</locationY>
+        <locationX>1056</locationX>
+        <locationY>671</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Is_Registered</targetReference>
@@ -314,6 +357,13 @@
                 <elementReference>$Record.Session__r.Public_Event__c</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Cancelled__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Event_Registration__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -321,8 +371,8 @@
     <recordLookups>
         <name>Get_Related_Registrations</name>
         <label>Get Related Registrations</label>
-        <locationX>50</locationX>
-        <locationY>431</locationY>
+        <locationX>154</locationX>
+        <locationY>671</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Speaker_Reg_Loop</targetReference>
@@ -335,6 +385,13 @@
                 <elementReference>$Record.Attendee__c</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Cancelled__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Session_Registration__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -342,8 +399,8 @@
     <recordLookups>
         <name>Get_Session_Registrations</name>
         <label>Get Session Registrations</label>
-        <locationX>666</locationX>
-        <locationY>911</locationY>
+        <locationX>770</locationX>
+        <locationY>1151</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>SREG_LOOP</targetReference>
@@ -356,18 +413,41 @@
                 <elementReference>$Record.Attendee__c</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Cancelled__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Session_Registration__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>Set_Cancelled_Text_0</name>
+        <label>Set Cancelled Text</label>
+        <locationX>176</locationX>
+        <locationY>311</locationY>
+        <connector>
+            <targetReference>Is_Cancelled</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Cancelled_Text__c</field>
+            <value>
+                <elementReference>$Record.Cancelled__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
     <start>
-        <locationX>584</locationX>
+        <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Which_Record_Type</targetReference>
+            <targetReference>Set_Cancelled_Text_0</targetReference>
         </connector>
         <object>Session_Registration__c</object>
-        <recordTriggerType>Create</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>

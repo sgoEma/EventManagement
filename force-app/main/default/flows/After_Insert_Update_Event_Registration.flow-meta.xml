@@ -136,6 +136,21 @@
             </connector>
             <label>Cancelled</label>
         </rules>
+        <rules>
+            <name>Active</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Cancelled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Is_Number_Of_Registered_Sessions_Changed_Check</targetReference>
+            </connector>
+            <label>Active</label>
+        </rules>
     </decisions>
     <decisions>
         <name>Event_Type</name>
@@ -197,6 +212,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_Number_Of_Registered_Sessions_Changed_Check</name>
+        <label>Is Number Of Registered Sessions Changed Check</label>
+        <locationX>1062</locationX>
+        <locationY>384</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Changed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_Number_Of_Registered_Sessions_Changed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Number_of_Registered_Sessions__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <numberValue>0.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Cancel_Event_Reg</targetReference>
+            </connector>
+            <label>Changed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>If contact has email, we will send an email notification via email when event registration is done.</description>
         <name>Notification_Channel</name>
         <label>Notification Channel</label>
@@ -226,6 +270,11 @@
 Auto Email Notification for Event Registration &amp; Auto Registration for Welcome Sessions at Dreamforce Events
 -Update:
 Auto Cancellation for session registrations under cancelled event registrations</description>
+    <formulas>
+        <name>Is_Number_Of_Registered_Sessions_Changed</name>
+        <dataType>Boolean</dataType>
+        <expression>ISCHANGED({!$Record.Number_of_Registered_Sessions__c})</expression>
+    </formulas>
     <formulas>
         <name>ISNEW</name>
         <dataType>Boolean</dataType>
@@ -326,6 +375,13 @@ Auto Cancellation for session registrations under cancelled event registrations<
                 <elementReference>Session_Loop.Id</elementReference>
             </value>
         </filters>
+        <filters>
+            <field>Cancelled__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Session_Registration__c</object>
         <queriedFields>Id</queriedFields>
@@ -376,11 +432,46 @@ Auto Cancellation for session registrations under cancelled event registrations<
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
+        <name>Cancel_Event_Reg</name>
+        <label>Cancel Event Reg</label>
+        <locationX>1245</locationX>
+        <locationY>380</locationY>
+        <inputAssignments>
+            <field>Cancelled_Text__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Cancelled__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Cancelled_Session_Registrations</name>
         <label>Update Cancelled Session Registrations</label>
         <locationX>837</locationX>
         <locationY>1550</locationY>
+        <connector>
+            <targetReference>Update_Number_Of_Registered_Sessions</targetReference>
+        </connector>
         <inputReference>CancelledSessionRegistrations</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Number_Of_Registered_Sessions</name>
+        <label>Update Number Of Registered Sessions</label>
+        <locationX>839</locationX>
+        <locationY>1705</locationY>
+        <inputAssignments>
+            <field>Number_of_Registered_Sessions__c</field>
+            <value>
+                <numberValue>0.0</numberValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
         <locationX>490</locationX>

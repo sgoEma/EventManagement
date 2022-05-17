@@ -19,6 +19,7 @@
 		<members>Event_Registration__c.Contact__c</members>
 		<members>Event_Registration__c.Dietary_of_Contact__c</members>
 		<members>Event_Registration__c.Event_Type__c</members>
+		<members>Event_Registration__c.Number_of_Registered_Sessions__c</members>
 		<members>Event_Registration__c.Public_Event__c</members>
 		<members>Event_Registration__c.Registration_Fee__c</members>
 		<members>Event_Registration__c.Registration_Id__c</members>
@@ -34,6 +35,7 @@
 		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
 		<members>Session_Registration__c.Attendee__c</members>
+		<members>Session_Registration__c.Cancelled_Text__c</members>
 		<members>Session_Registration__c.Cancelled__c</members>
 		<members>Session_Registration__c.IsEventRegistered__c</members>
 		<members>Session_Registration__c.IsOverlaps__c</members>
@@ -66,6 +68,7 @@
 	<types>
 		<members>Event_Registration__c.Event_Registration_Rule</members>
 		<members>Public_Event__c.Prevent_Duplicate</members>
+		<members>Session_Registration__c.Session_Registration_Duplicate_Rule</members>
 		<name>DuplicateRule</name>
 	</types>
 	<types>
@@ -106,6 +109,7 @@
 	<types>
 		<members>Event_Registration__c.Event_Registration_Rule_matching_rule</members>
 		<members>Public_Event__c.Public_Event_Matching_Rule</members>
+		<members>Session_Registration__c.Session_Registration_Matching_Rule</members>
 		<name>MatchingRule</name>
 	</types>
 	<types>
