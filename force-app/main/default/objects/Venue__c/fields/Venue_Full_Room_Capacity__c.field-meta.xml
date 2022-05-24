@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Venue_Full_Room_Capacity__c</fullName>
+    <description>Venue total capacity, after the maintenance of rooms, is done.</description>
+    <externalId>false</externalId>
+    <label>Venue Full Room Capacity</label>
+    <summarizedField>Room__c.Room_Total_Capacity__c</summarizedField>
+    <summaryForeignKey>Room__c.Venue__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

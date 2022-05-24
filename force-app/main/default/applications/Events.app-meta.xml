@@ -32,6 +32,7 @@
     <tabs>Public_Event__c</tabs>
     <tabs>Session__c</tabs>
     <tabs>standard-Contact</tabs>
+    <tabs>Venue__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Events_UtilityBar</utilityBar>
 </CustomApplication>
