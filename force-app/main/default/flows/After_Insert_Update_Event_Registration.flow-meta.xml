@@ -404,6 +404,13 @@ Auto Cancellation for session registrations under cancelled event registrations<
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
+        <filters>
+            <field>Public_Event__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Public_Event__c</elementReference>
+            </value>
+        </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>Session__c</object>
         <queriedFields>Id</queriedFields>
