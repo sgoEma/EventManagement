@@ -27,6 +27,8 @@
 		<members>Event_Registration__c.Public_Event__c</members>
 		<members>Event_Registration__c.Registration_Fee__c</members>
 		<members>Event_Registration__c.Registration_Id__c</members>
+		<members>Public_Event_Venue__c.Public_Event__c</members>
+		<members>Public_Event_Venue__c.Venue__c</members>
 		<members>Public_Event__c.City__c</members>
 		<members>Public_Event__c.Country__c</members>
 		<members>Public_Event__c.Date_End__c</members>
@@ -38,6 +40,11 @@
 		<members>Public_Event__c.Start_Date__c</members>
 		<members>Public_Event__c.Street__c</members>
 		<members>Public_Event__c.Type__c</members>
+		<members>Room__c.In_Maintenance__c</members>
+		<members>Room__c.Room_Capacity_For_VIPs__c</members>
+		<members>Room__c.Room_Capacity__c</members>
+		<members>Room__c.Room_Total_Capacity__c</members>
+		<members>Room__c.Venue__c</members>
 		<members>Session_Registration__c.Attendee__c</members>
 		<members>Session_Registration__c.Cancelled_Text__c</members>
 		<members>Session_Registration__c.Cancelled__c</members>
@@ -53,16 +60,27 @@
 		<members>Session__c.Public_Event__c</members>
 		<members>Session__c.Room_Capacity_For_VIPs__c</members>
 		<members>Session__c.Room_Capacity__c</members>
-		<members>Session__c.Room_Name__c</members>
+		<members>Session__c.Room__c</members>
 		<members>Session__c.Start_Date_Time__c</members>
+		<members>Venue__c.Available_Room_Capacity__c</members>
+		<members>Venue__c.Available_Room_Capacity_for_VIPs__c</members>
+		<members>Venue__c.City__c</members>
+		<members>Venue__c.Country__c</members>
+		<members>Venue__c.Postal_Code__c</members>
+		<members>Venue__c.Street__c</members>
+		<members>Venue__c.Total_Available_Room_Capacity__c</members>
+		<members>Venue__c.Venue_Full_Room_Capacity__c</members>
 		<name>CustomField</name>
 	</types>
 	<types>
 		<members>Contact</members>
 		<members>Event_Registration__c</members>
+		<members>Public_Event_Venue__c</members>
 		<members>Public_Event__c</members>
+		<members>Room__c</members>
 		<members>Session_Registration__c</members>
 		<members>Session__c</members>
+		<members>Venue__c</members>
 		<name>CustomObject</name>
 	</types>
 	<types>
@@ -72,7 +90,6 @@
 	<types>
 		<members>Event_Registration__c.Event_Registration_Rule</members>
 		<members>Public_Event__c.Prevent_Duplicate</members>
-		<members>Session_Registration__c.Session_Registration_Duplicate_Rule</members>
 		<name>DuplicateRule</name>
 	</types>
 	<types>
@@ -92,9 +109,12 @@
 		<members>Contact-Contact Layout</members>
 		<members>Contact-Speaker Layout</members>
 		<members>Event_Registration__c-Event Registration Layout</members>
+		<members>Public_Event_Venue__c-Public Event Venue Layout</members>
 		<members>Public_Event__c-Public Event Layout</members>
+		<members>Room__c-Room Layout</members>
 		<members>Session_Registration__c-Session Registration Layout</members>
 		<members>Session__c-Session Layout</members>
+		<members>Venue__c-Venue Layout</members>
 		<name>Layout</name>
 	</types>
 	<types>
