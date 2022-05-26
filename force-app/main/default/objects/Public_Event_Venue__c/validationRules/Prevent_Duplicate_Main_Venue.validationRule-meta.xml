@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Duplicate_Main_Venue</fullName>
+    <active>true</active>
+    <errorConditionFormula>Public_Event__r.Main_Venue__r.Id = Venue__r.Id</errorConditionFormula>
+    <errorMessage>This venue is set as the main venue. Please choose another one.</errorMessage>
+</ValidationRule>

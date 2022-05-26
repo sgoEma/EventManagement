@@ -1,4 +1,3 @@
-
 // After_Insert_Update_Event_Registration flow test class
 @isTest
 public class EventRegFlowTest {
@@ -14,80 +13,97 @@ public class EventRegFlowTest {
                                 );
         insert cont;
 
-        //Create a Public Event with all required fields
-        Public_Event__c pe1 = new Public_Event__c( Name = 'Public Event Test 1',
-                                                  Type__c = 'Dreamforce',
-                                                  Start_Date__c = Datetime.newInstance(2022, 5, 1, 12, 00, 0),
-                                                  End_Date__c = Datetime.newInstance(2022, 5, 30, 12, 00, 0),
-                                                  City__c = 'Aydın',
-                                                  Country__c = 'Turkey'
-                                                );
+        //Create Venues with all required fields
+        List<Venue__c> vList = new List<Venue__c>();
+        for(Integer i = 0; i<5; i++){
+            Venue__c ve = new Venue__c( Name = 'Venue Test'+ String.valueOf(i),
+                                        Street__c = 'Alsancak',
+                                        City__c = 'İzmir',
+                                        Country__c = 'Turkey'
+            );
+        vList.add(ve);
+        }
+        insert vList;
 
-        Public_Event__c pe2 = new Public_Event__c( Name = 'Public Event Test 2',
-                                                   Type__c = 'Dreamforce',
-                                                   Start_Date__c = Datetime.newInstance(2022, 6, 1, 12, 00, 0),
-                                                   End_Date__c = Datetime.newInstance(2022, 6, 30, 12, 00, 0),
-                                                   City__c = 'IZMIR',
-                                                   Country__c = 'Turkey'
-                                                 );
-        insert new List<Public_Event__c>{pe1, pe2};
+        //Create Rooms with all required fields
+        List<Room__c> rList = new List<Room__c>();
+        for(Integer i = 0; i<3; i++){
+            Room__c ro = new Room__c(   Name = 'Room Test' + String.valueOf(i),
+                                        Room_Capacity__c = 25 + i*25,
+                                        Venue__c = vList[0].Id
+        );
+        rList.add(ro);
+        }
+
+        for(Integer i = 0; i<2; i++){
+            Room__c ro = new Room__c(   Name = 'Room Test' + String.valueOf(i),
+                                        Room_Capacity__c = 25 + i*25,
+                                        Venue__c = vList[1].Id
+        );
+        rList.add(ro);
+        }
+        
+        insert rList;
+
+        //Create Public Event with all required fields
+        List<Public_Event__c> pList = new List<Public_Event__c>();
+        for(Integer i =0; i<5;i++){
+            Public_Event__c pe = new Public_Event__c( Name = 'Public Event Test' + String.valueOf(i),
+                                                    Type__c = 'Dreamforce',
+                                                    Start_Date__c = Datetime.now(),
+                                                    End_Date__c = (Datetime.now()).addMonths(1),
+                                                    City__c = 'İzmir',
+                                                    Country__c = 'Turkey',
+                                                    Main_Venue__c = vList[0].Id
+        );
+        pList.add(pe);
+        }
+        insert pList;
 
         //Create Sessions with all required fields
-        Session__c  s1 = new Session__c( Name = 'Session Test 1',
-                                         Public_Event__c = pe1.Id,
-                                         Is_Mandatory__c = true,
-                                         Start_Date_Time__c = Datetime.newInstance(2022, 5, 1, 12, 00, 0),
-                                         End_Date_Time__c = Datetime.newInstance(2022, 5, 3, 12, 00, 0)
-                                        );
-        Session__c  s2 = new Session__c( Name = 'Session Test 2',
-                                         Public_Event__c = pe1.Id,
-                                         Is_Mandatory__c = true,
-                                         Start_Date_Time__c = Datetime.newInstance(2022, 5, 4, 12, 00, 0),
-                                         End_Date_Time__c = Datetime.newInstance(2022, 5, 6, 12, 00, 0)
-                                        );
-        Session__c  s3 = new Session__c( Name = 'Session Test 3',
-                                         Public_Event__c = pe1.Id,
-                                         Is_Mandatory__c = false,
-                                         Start_Date_Time__c = Datetime.newInstance(2022, 5, 7, 12, 00, 0),
-                                         End_Date_Time__c = Datetime.newInstance(2022, 5, 9, 12, 00, 0)
-                                        );
-        Session__c  s4 = new Session__c( Name = 'Session Test 4',
-                                         Public_Event__c = pe2.Id,
-                                         Is_Mandatory__c = true,
-                                         Start_Date_Time__c = Datetime.newInstance(2022, 6, 4, 12, 00, 0),
-                                         End_Date_Time__c = Datetime.newInstance(2022, 6, 6, 12, 00, 0)
-                                       );
-        Session__c  s5 = new Session__c( Name = 'Session Test 5',
-                                         Public_Event__c = pe2.Id,
-                                         Is_Mandatory__c = false,
-                                         Start_Date_Time__c = Datetime.newInstance(2022, 6, 7, 12, 00, 0),
-                                         End_Date_Time__c = Datetime.newInstance(2022, 6, 9, 12, 00, 0)
-                                       );
-        insert new List<Session__c>{s1, s2, s3, s4, s5};
+        List<Session__c> sList = new List<Session__c>();
+        for(Integer i = 0; i<3; i++){
+            Session__c  s = new Session__c( Name = 'Session Test' + String.valueOf(i),
+                                            Public_Event__c = pList[0].Id,
+                                            Start_Date_Time__c = (Datetime.now()).addDays(i),
+                                            End_Date_Time__c = (Datetime.now()).addDays(i+2),
+                                            Room__c = rList[i].Id
+            );
+            if(math.mod(i, 2) == 0){
+                s.Is_Mandatory__c = true;
+            }else{
+                s.Is_Mandatory__c = false;
+            }
+            sList.add(s);
+        }
+        insert sList;
     }
 
     //Test Flow without Contact Email Information
     @isTest
-    static void testWithoutEmail() {
+        static void testWithoutEmail() {
     
-    //Get Contact and Public Event
-    Contact cont = [SELECT Id FROM Contact WHERE FirstName = 'Test' ];
-    Public_Event__c pe = [SELECT Id FROM Public_Event__c WHERE Name = 'Public Event Test 1' ];  
+        //Get Contact and Public Event
+        Contact cont = [SELECT Id FROM Contact WHERE FirstName = 'Test' ];
+        List<Public_Event__c> pList = [SELECT Id FROM Public_Event__c];  
 
-    //Create Event Registration with all required fields
-    Event_Registration__c evReg = new Event_Registration__c( Contact__c = cont.Id,
-                                                             Public_Event__c = pe.Id
-                                                            );
-    insert evReg;
+        //Create Event Registration with all required fields
+        List<Event_Registration__c> evList = new List<Event_Registration__c>();
+        for(Integer i =0; i<5;i++){
+            Event_Registration__c er = new Event_Registration__c(   Contact__c = cont.Id,
+                                                                    Public_Event__c = pList[i].Id
+        );
+        evList.add(er);
+        }
+        insert evList;
     }
 
     //Test Flow with Contact Email Information
     @isTest
-    static void testWithEmail() {
+        static void testWithEmail() {
     
         //Get Public Event
-        Public_Event__c pe1 = [SELECT Id FROM Public_Event__c WHERE Name = 'Public Event Test 1'];
-        Public_Event__c pe2 = [SELECT Id FROM Public_Event__c WHERE Name = 'Public Event Test 2'];  
+        List<Public_Event__c> pList = [SELECT Id FROM Public_Event__c]; 
         
         //Create a Contact with all required fields    
         Contact cont = new Contact( FirstName = 'Test',
@@ -98,14 +114,16 @@ public class EventRegFlowTest {
         insert cont;
         
         //Create Event Registration with all required fields
-        Event_Registration__c evReg1 = new Event_Registration__c( Contact__c = cont.Id,
-                                                                 Public_Event__c = pe1.Id
-                                                                );
-        insert evreg1;
-        Event_Registration__c evReg2 = new Event_Registration__c( Contact__c = cont.Id,
-                                                                 Public_Event__c = pe2.Id
-                                                                );
-        insert evreg2;
+        List<Event_Registration__c> evList = new List<Event_Registration__c>();
+        for(Integer i =0; i<5;i++){
+            Event_Registration__c er = new Event_Registration__c(   Contact__c = cont.Id,
+                                                                    Public_Event__c = pList[i].Id
+        );
+        evList.add(er);
+        }
+        insert evList;
+    
+        system.debug('Event Registrations' + evList);
 
         //Get Session Registrations
         List<Session_Registration__c> sReg =[SELECT Id, Name, Attendee__c FROM Session_Registration__c];
@@ -118,25 +136,29 @@ public class EventRegFlowTest {
 
     //Test Flow Update without Contact Email Information
     @isTest
-    static void testUpdate() {
+        static void testUpdate() {
     
-    //Get Contact and Public Event
-    Contact cont = [SELECT Id FROM Contact WHERE FirstName = 'Test'];
-    Public_Event__c pe = [SELECT Id FROM Public_Event__c WHERE Name = 'Public Event Test 2'];
+        //Get Contact and Public Event
+        Contact cont = [SELECT Id FROM Contact WHERE FirstName = 'Test'];
+        List<Public_Event__c> pList = [SELECT Id FROM Public_Event__c];
 
-    //Create Event Registration with all required fields
-    Event_Registration__c evReg = new Event_Registration__c( Contact__c = cont.Id,
-                                                             Public_Event__c = pe.Id
-                                                            );
-    insert evreg;
+        //Create Event Registration with all required fields
+        List<Event_Registration__c> evList = new List<Event_Registration__c>();
+        for(Integer i =0; i<5;i++){
+            Event_Registration__c er = new Event_Registration__c(   Contact__c = cont.Id,
+                                                                    Public_Event__c = pList[i].Id
+        );
+        evList.add(er);
+        }
+        insert evList;
 
-    List<Session_Registration__c> sReg1 =[SELECT Id, Name, Attendee__c, Cancelled__c  FROM Session_Registration__c];
-    system.debug('sReg1 ==>> ' + sReg1);
+        List<Session_Registration__c> sReg1 =[SELECT Id, Name, Attendee__c, Cancelled__c  FROM Session_Registration__c];
+        system.debug('sReg1 ==>> ' + sReg1);
 
-    evReg.Cancelled__c = true;
-    update evreg;
+        evList[0].Cancelled__c = true;
+        update evList[0];
 
-    List<Session_Registration__c> sReg2 =[SELECT Id, Name, Attendee__c, Cancelled__c  FROM Session_Registration__c];
-    system.debug('sReg2 ==>> ' + sReg2);
+        List<Session_Registration__c> sReg2 =[SELECT Id, Name, Attendee__c, Cancelled__c  FROM Session_Registration__c];
+        system.debug('sReg2 ==>> ' + sReg2);
     }
 }

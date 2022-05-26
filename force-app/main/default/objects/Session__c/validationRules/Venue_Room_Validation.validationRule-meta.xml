@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Venue_Room_Validation</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+(Room__r.Venue__c
+&lt;&gt; 
+$ObjectType.Public_Event_Venue__c.Fields.Venue__c),
+Room__r.Venue__c &lt;&gt; Public_Event__r.Main_Venue__c 
+)</errorConditionFormula>
+    <errorMessage>Sessions only served rooms that are under the related venue of public event</errorMessage>
+</ValidationRule>
