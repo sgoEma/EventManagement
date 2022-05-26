@@ -57,6 +57,7 @@
 		<members>Session__c.Is_Mandatory__c</members>
 		<members>Session__c.Level__c</members>
 		<members>Session__c.Number_of_Registered_Attendee__c</members>
+		<members>Session__c.Overlapping__c</members>
 		<members>Session__c.Public_Event__c</members>
 		<members>Session__c.Room_Capacity_For_VIPs__c</members>
 		<members>Session__c.Room_Capacity__c</members>
@@ -158,6 +159,7 @@
 		<members>Session_Registration__c.Event_Not_Registered</members>
 		<members>Session_Registration__c.Is_Overlaps_Check</members>
 		<members>Session__c.Compare_Start_and_End_Date</members>
+		<members>Session__c.Session_Room_Overlap</members>
 		<members>Session__c.Validate_Date</members>
 		<name>ValidationRule</name>
 	</types>
