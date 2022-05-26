@@ -91,6 +91,7 @@
 	<types>
 		<members>Event_Registration__c.Event_Registration_Rule</members>
 		<members>Public_Event__c.Prevent_Duplicate</members>
+		<members>Session_Registration__c.Session_Registration_Duplicate_Rule</members>
 		<name>DuplicateRule</name>
 	</types>
 	<types>
