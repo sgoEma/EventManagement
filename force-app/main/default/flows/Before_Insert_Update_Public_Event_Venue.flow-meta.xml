@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <assignments>
+        <name>Create_or_Update_Record</name>
+        <label>Create or Update Record</label>
+        <locationX>1358</locationX>
+        <locationY>387</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Prevent_Save__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
+        <name>Prevent_Duplicate</name>
+        <label>Prevent Duplicate</label>
+        <locationX>1050</locationX>
+        <locationY>628</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Prevent_Save__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Has_Record_Created</name>
+        <label>Has Record Created</label>
+        <locationX>1040</locationX>
+        <locationY>393</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Created_Before</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_PEVs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Prevent_Duplicate</targetReference>
+            </connector>
+            <label>Created Before</label>
+        </rules>
+        <rules>
+            <name>Not_Created_Before</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_PEVs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_or_Update_Record</targetReference>
+            </connector>
+            <label>Not Created Before</label>
+        </rules>
+    </decisions>
+    <description>Control the checkbox that is used in the validation rule(Prevent_Duplicate_Public_Event_Venue)</description>
+    <interviewLabel>Before Insert Update Public Event Venue {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Before Insert Update Public Event Venue</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_PEVs</name>
+        <label>Get PEVs</label>
+        <locationX>768</locationX>
+        <locationY>391</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Has_Record_Created</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Public_Event__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Public_Event__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Venue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Venue__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Public_Event_Venue__c</object>
+        <queriedFields>Id</queriedFields>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>930</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_PEVs</targetReference>
+        </connector>
+        <object>Public_Event_Venue__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

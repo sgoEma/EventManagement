@@ -43,7 +43,7 @@
         <label>Address Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Street__c</field>
             </layoutItems>
             <layoutItems>
@@ -233,6 +233,10 @@
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>Public_Event_Venue__c.Venue__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Public_Event__c.Main_Venue__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

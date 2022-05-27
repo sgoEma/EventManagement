@@ -5,14 +5,15 @@ public class Venue_and_Room_Test_Class {
 
     //Test Create Venues
     @isTest
-    static void testVenue() {
+        static void testVenue() {
 
         //Create Venues with all required fields
         List<Venue__c> vList = new List<Venue__c>();
         for(Integer i = 0; i<5; i++){
             Venue__c ve = new Venue__c( Name = 'Venue Test'+ String.valueOf(i),
-                                          City__c = 'İzmir',
-                                          Country__c = 'Turkey'
+                                        Street__c = 'Alsancak',
+                                        City__c = 'İzmir',
+                                        Country__c = 'Turkey'
         );
         vList.add(ve);
         }
@@ -24,14 +25,15 @@ public class Venue_and_Room_Test_Class {
 
     //Test Create Rooms for Venue
     @isTest
-    static void testRoom() {
+        static void testRoom() {
 
         //Create Venues with all required fields
         List<Venue__c> vList = new List<Venue__c>();
         for(Integer i = 0; i<5; i++){
             Venue__c ve = new Venue__c( Name = 'Venue Test'+ String.valueOf(i),
-                                          City__c = 'İzmir',
-                                          Country__c = 'Turkey'
+                                        Street__c = 'Alsancak',
+                                        City__c = 'İzmir',
+                                        Country__c = 'Turkey'
         );
         vList.add(ve);
         }
@@ -40,17 +42,17 @@ public class Venue_and_Room_Test_Class {
         //Create Rooms with all required fields
         List<Room__c> rList = new List<Room__c>();
         for(Integer i = 0; i<3; i++){
-            Room__c ro = new Room__c( Name = 'Room Test' + String.valueOf(i),
-                                  Room_Capacity__c = 25 + i*25,
-                                  Venue__c = vList[0].Id
+            Room__c ro = new Room__c(   Name = 'Room Test' + String.valueOf(i),
+                                        Room_Capacity__c = 25 + i*25,
+                                        Venue__c = vList[0].Id
         );
         rList.add(ro);
         }
         
         for(Integer i = 0; i<2; i++){
-            Room__c ro = new Room__c( Name = 'Room Test' + String.valueOf(i),
-                                  Room_Capacity__c = 25 + i*25,
-                                  Venue__c = vList[1].Id
+            Room__c ro = new Room__c(   Name = 'Room Test' + String.valueOf(i),
+                                        Room_Capacity__c = 25 + i*25,
+                                        Venue__c = vList[1].Id
         );
         rList.add(ro);
         }
@@ -62,12 +64,13 @@ public class Venue_and_Room_Test_Class {
 
     //Test Create Sessions with Room Record
     @isTest
-    static void testSessionwithRoom() {
+        static void testSessionwithRoom() {
         
         //Create Venues with all required fields
         List<Venue__c> vList = new List<Venue__c>();
         for(Integer i = 0; i<5; i++){
             Venue__c ve = new Venue__c( Name = 'Venue Test'+ String.valueOf(i),
+                                        Street__c = 'Alsancak',
                                         City__c = 'İzmir',
                                         Country__c = 'Turkey'
             );
@@ -78,9 +81,9 @@ public class Venue_and_Room_Test_Class {
         //Create Rooms with all required fields
         List<Room__c> rList = new List<Room__c>();
         for(Integer i = 0; i<3; i++){
-            Room__c ro = new Room__c( Name = 'Room Test' + String.valueOf(i),
-                                  Room_Capacity__c = 25 + i*25,
-                                  Venue__c = vList[0].Id
+            Room__c ro = new Room__c(   Name = 'Room Test' + String.valueOf(i),
+                                        Room_Capacity__c = 25 + i*25,
+                                        Venue__c = vList[0].Id
         );
         rList.add(ro);
         }
@@ -90,11 +93,12 @@ public class Venue_and_Room_Test_Class {
         List<Public_Event__c> pList = new List<Public_Event__c>();
         for(Integer i =0; i<5;i++){
             Public_Event__c pe = new Public_Event__c( Name = 'Public Event Test' + String.valueOf(i),
-                                                  Type__c = 'Dreamforce',
-                                                  Start_Date__c = Datetime.now(),
-                                                  End_Date__c = (Datetime.now()).addMonths(1),
-                                                  City__c = 'İzmir',
-                                                  Country__c = 'Turkey'
+                                                    Type__c = 'Dreamforce',
+                                                    Start_Date__c = Datetime.now(),
+                                                    End_Date__c = (Datetime.now()).addMonths(1),
+                                                    City__c = 'İzmir',
+                                                    Country__c = 'Turkey',
+                                                    Main_Venue__c = vList[0].Id
         );
         pList.add(pe);
         }
@@ -104,10 +108,10 @@ public class Venue_and_Room_Test_Class {
         List<Session__c> sList = new List<Session__c>();
         for(Integer i = 0; i<3; i++){
             Session__c  s = new Session__c( Name = 'Session Test' + String.valueOf(i),
-                                         Public_Event__c = pList[0].Id,
-                                         Start_Date_Time__c = (Datetime.now()).addDays(i),
-                                         End_Date_Time__c = (Datetime.now()).addDays(i+2),
-                                         Room__c = rList[i].Id
+                                            Public_Event__c = pList[0].Id,
+                                            Start_Date_Time__c = (Datetime.now()).addDays(i),
+                                            End_Date_Time__c = (Datetime.now()).addDays(i+2),
+                                            Room__c = rList[i].Id
             );
             if(math.mod(i, 2) == 0){
                 s.Is_Mandatory__c = true;
