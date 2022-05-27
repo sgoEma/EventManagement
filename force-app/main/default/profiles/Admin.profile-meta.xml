@@ -185,6 +185,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>Public_Event_Venue__c.Prevent_Save__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>Public_Event__c.Date_End__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -309,11 +314,6 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Venue__c.Street__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Venue__c.Total_Available_Room_Capacity__c</field>
         <readable>true</readable>
@@ -350,6 +350,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Insert_and_Update_Session</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Before_Insert_Update_Public_Event_Venue</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>

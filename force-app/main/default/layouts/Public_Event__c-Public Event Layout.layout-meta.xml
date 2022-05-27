@@ -23,6 +23,10 @@
                 <behavior>Required</behavior>
                 <field>End_Date__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Main_Venue__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -251,7 +255,6 @@
         <relatedList>Session__c.Public_Event__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>NAME</fields>
         <fields>Venue__c.NAME</fields>
         <fields>Venue__c.Available_Room_Capacity__c</fields>
         <fields>Venue__c.Available_Room_Capacity_for_VIPs__c</fields>
