@@ -4,8 +4,8 @@
     <assignments>
         <name>Fill_Dates_Text</name>
         <label>Fill Dates(Text)</label>
-        <locationX>610</locationX>
-        <locationY>617</locationY>
+        <locationX>68</locationX>
+        <locationY>978</locationY>
         <assignmentItems>
             <assignToReference>$Record.Date_Start__c</assignToReference>
             <operator>Assign</operator>
@@ -21,22 +21,174 @@
             </value>
         </assignmentItems>
     </assignments>
+    <assignments>
+        <description>Set Public Event Address Information from Main Venue</description>
+        <name>Set_Public_Event_Address_Information</name>
+        <label>Set Public Event Address Information</label>
+        <locationX>622</locationX>
+        <locationY>758</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Street__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Main_Venue__r.Street__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.City__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Main_Venue__r.City__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Country__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Main_Venue__r.Country__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.Postal_Code__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.Main_Venue__r.Postal_Code__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Fill_Dates_Text</targetReference>
+        </connector>
+    </assignments>
     <decisions>
-        <name>Dates_for_Set</name>
-        <label>Dates for Set</label>
-        <locationX>600</locationX>
-        <locationY>383</locationY>
+        <name>Address_Information_is_Set_or_Not</name>
+        <label>Address Information is Set or Not</label>
+        <locationX>55</locationX>
+        <locationY>460</locationY>
+        <defaultConnector>
+            <targetReference>Fill_Dates_Text</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Dates_are_Insert_or_Changed</name>
-            <conditionLogic>or</conditionLogic>
+            <name>Is_not_Set</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>ISNEW</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>$Record.Street__c</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <conditions>
+                <leftValueReference>$Record.City__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Postal_Code__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Public_Event_Address_Information</targetReference>
+            </connector>
+            <label>Is not Set</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Controls address information is changed and null</description>
+        <name>Address_Information_Status</name>
+        <label>Address Information Status</label>
+        <locationX>1186</locationX>
+        <locationY>461</locationY>
+        <defaultConnector>
+            <targetReference>Dates_for_Set</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Is_Changed_and_Null</name>
+            <conditionLogic>(1 OR 2 OR 3 OR 4) AND 5 AND 6 AND 7 AND 8</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Street__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.City__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Postal_Code__c</leftValueReference>
+                <operator>IsChanged</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Street__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.City__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Country__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Postal_Code__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Public_Event_Address_Information</targetReference>
+            </connector>
+            <label>Is Changed and Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Dates_for_Set</name>
+        <label>Dates for Set</label>
+        <locationX>1187</locationX>
+        <locationY>982</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Dates_are_Insert_or_Changed</name>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Start_Date__c</leftValueReference>
                 <operator>IsChanged</operator>
@@ -57,7 +209,45 @@
             <label>Dates are Insert or Changed</label>
         </rules>
     </decisions>
-    <description>Fill &quot;DateStart&quot; &amp; &quot;DateEnd&quot; fields</description>
+    <decisions>
+        <name>Insert_or_Update</name>
+        <label>Insert or Update</label>
+        <locationX>599</locationX>
+        <locationY>451</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Insert</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Address_Information_is_Set_or_Not</targetReference>
+            </connector>
+            <label>Insert</label>
+        </rules>
+        <rules>
+            <name>Update</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ISNEW</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Address_Information_Status</targetReference>
+            </connector>
+            <label>Update</label>
+        </rules>
+    </decisions>
+    <description>Set &quot;DateStart&quot; &amp; &quot;DateEnd&quot; fields &amp;
+Set Address Information from Main Venue, if It&apos;s not set for Public Event</description>
     <formulas>
         <description>End date of Public Event</description>
         <name>EndDate</name>
@@ -100,7 +290,7 @@
         <locationX>489</locationX>
         <locationY>28</locationY>
         <connector>
-            <targetReference>Dates_for_Set</targetReference>
+            <targetReference>Insert_or_Update</targetReference>
         </connector>
         <object>Public_Event__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
