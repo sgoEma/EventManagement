@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mandatory_Session_Validation</fullName>
+    <active>true</active>
+    <description>Mandatory sessions can be served only in main venue rooms</description>
+    <errorConditionFormula>AND(
+Room__r.Venue__c &lt;&gt; Public_Event__r.Main_Venue__c,
+Is_Mandatory__c = true
+)</errorConditionFormula>
+    <errorMessage>Mandatory sessions can be served only in main venue rooms</errorMessage>
+</ValidationRule>

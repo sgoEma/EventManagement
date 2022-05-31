@@ -164,9 +164,9 @@
 		<members>Session_Registration__c.Event_Not_Registered</members>
 		<members>Session_Registration__c.Is_Overlaps_Check</members>
 		<members>Session__c.Compare_Start_and_End_Date</members>
+		<members>Session__c.Mandatory_Session_Validation</members>
 		<members>Session__c.Session_Room_Overlap</members>
 		<members>Session__c.Validate_Date</members>
-		<members>Session__c.Venue_Room_Validation</members>
 		<name>ValidationRule</name>
 	</types>
 	<version>53.0</version>
