@@ -6,6 +6,10 @@
         <visible>true</visible>
     </applicationVisibilities>
     <classAccesses>
+        <apexClass>BeforeInsertUpdateSessionFlowTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>EventRegFlowTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -280,6 +284,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Session__c.Overlapping__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Session__c.Room_Capacity_For_VIPs__c</field>
         <readable>true</readable>
@@ -337,6 +346,10 @@
     <flowAccesses>
         <enabled>false</enabled>
         <flow>Before_Insert_Update_Public_Event</flow>
+    </flowAccesses>
+    <flowAccesses>
+        <enabled>false</enabled>
+        <flow>Before_Insert_and_Update_Session</flow>
     </flowAccesses>
     <flowAccesses>
         <enabled>false</enabled>
