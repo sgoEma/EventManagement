@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_Room_Overlap</fullName>
+    <active>true</active>
+    <errorConditionFormula>Overlapping__c</errorConditionFormula>
+    <errorMessage>Room is not available for given time frame.</errorMessage>
+</ValidationRule>
