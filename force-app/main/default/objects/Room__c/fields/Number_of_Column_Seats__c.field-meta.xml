@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Room_Capacity__c</fullName>
+    <fullName>Number_of_Column_Seats__c</fullName>
     <externalId>false</externalId>
-    <formula>Room_Total_Capacity__c - Room_Capacity_For_VIPs__c</formula>
-    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-    <label>Room Capacity</label>
+    <label>Number of Column Seats</label>
     <precision>18</precision>
-    <required>false</required>
+    <required>true</required>
     <scale>0</scale>
     <trackTrending>false</trackTrending>
     <type>Number</type>

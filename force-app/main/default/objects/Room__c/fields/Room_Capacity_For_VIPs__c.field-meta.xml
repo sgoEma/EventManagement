@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Room_Capacity_For_VIPs__c</fullName>
+    <defaultValue>0</defaultValue>
     <externalId>false</externalId>
     <label>Room Capacity For VIPs</label>
     <precision>18</precision>

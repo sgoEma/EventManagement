@@ -4,26 +4,31 @@ public class BeforeInsertUpdateSessionFlowTest {
     //Insert Test Data
     @testSetup
     private static void insertTestData(){
+        
+        //Create and insert a Venue record
+        Venue__c venue = new Venue__c(  Name = 'Test Venue', 
+                                        Street__c = 'Talat Paşa Caddesi',                                
+                                        City__c = 'Edirne', 
+                                        Country__c = 'Turkey');
+        insert venue;
+        
         //Create and insert a Public Event record
         Public_Event__c event = new Public_Event__c( Name = 'Test Event',
                                                      Type__c = 'Connections',
                                                    	 Start_Date__c = Datetime.newInstance(2022, 5, 1, 12, 00, 0),
                                                    	 End_Date__c = Datetime.newInstance(2022, 5, 30, 12, 00, 0),
                                                    	 City__C = 'Edirne',
-                                                   	 Country__c = 'Turkey');
+                                                   	 Country__c = 'Turkey',
+                                                     Main_Venue__c = venue.Id);
         insert event;
 
-        //Create and insert a Venue record
-        Venue__c venue = new Venue__c( Name = 'Test Venue', 
-                                        City__c = 'Edirne', 
-                                        Country__c = 'Turkey'
-                                        );
-        insert venue;
+        
 
         //Create and insert a Room record
         Room__c room = new Room__c( Name = 'Test Room', 
-                                    Venue__c = venue.Id, 
-                                    Room_Capacity__c = 5
+                                    Venue__c = venue.Id,
+                                    Number_of_Column_Seats__c = 10,
+                                    Number_of_Row_Seats__c = 10
                                     );
         insert room;
 

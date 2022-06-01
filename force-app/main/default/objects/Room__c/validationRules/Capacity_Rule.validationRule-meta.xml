@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Capacity_Rule</fullName>
+    <active>true</active>
+    <errorConditionFormula>Room_Capacity__c &lt;0</errorConditionFormula>
+    <errorMessage>Room capacity can&apos;t be under zero</errorMessage>
+</ValidationRule>
