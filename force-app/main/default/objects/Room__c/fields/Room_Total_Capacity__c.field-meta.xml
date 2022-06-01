@@ -2,12 +2,12 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Room_Total_Capacity__c</fullName>
     <externalId>false</externalId>
-    <formula>Room_Capacity__c +  Room_Capacity_For_VIPs__c</formula>
+    <formula>Number_of_Column_Seats__c * Number_of_Row_Seats__c</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Room Total Capacity</label>
     <precision>18</precision>
     <required>false</required>
-    <scale>2</scale>
+    <scale>0</scale>
     <trackTrending>false</trackTrending>
     <type>Number</type>
     <unique>false</unique>

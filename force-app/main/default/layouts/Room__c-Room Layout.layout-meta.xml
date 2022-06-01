@@ -16,22 +16,30 @@
                 <field>Venue__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>In_Maintenance__c</field>
+                <behavior>Required</behavior>
+                <field>Number_of_Row_Seats__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Number_of_Column_Seats__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Room_Capacity__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Room_Capacity_For_VIPs__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Room_Capacity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Room_Total_Capacity__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>In_Maintenance__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -205,12 +213,12 @@
         <sizeX>4</sizeX>
         <sizeY>1</sizeY>
         <summaryLayoutItems>
-            <field>Room_Capacity__c</field>
+            <field>Name</field>
             <posX>0</posX>
             <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
-            <field>Room_Capacity_For_VIPs__c</field>
+            <field>Room_Total_Capacity__c</field>
             <posX>1</posX>
             <posY>0</posY>
         </summaryLayoutItems>
