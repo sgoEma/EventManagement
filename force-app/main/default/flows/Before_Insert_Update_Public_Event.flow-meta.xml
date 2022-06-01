@@ -117,7 +117,7 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Changed_and_Null</name>
-            <conditionLogic>(1 OR 2 OR 3 OR 4) AND 5 AND 6 AND 7 AND 8</conditionLogic>
+            <conditionLogic>((1 AND 5) OR 5) AND ((2 AND 6) OR 6) AND ((3 AND 7) OR 7) AND ((4 AND 8) OR 8)</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.Street__c</leftValueReference>
                 <operator>IsChanged</operator>
